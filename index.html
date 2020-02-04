@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <title>Intention Timer</title>
+
 </head>
     <body>
         <header>
@@ -27,21 +28,22 @@
                     <section>
                         <div>
                             <p>Minutes</p>
-                            <input type="text">
+                            <input ID="minIn" type="text">
                         </div>
                         <div>
                             <p>Seconds</p>
-                            <input type="text">
+                            <input ID="secIn" type="text">
                         </div>
                     </section>
-                    <input type="submit" class="submit" value="START ACTIVITY">
+                    <input type="button" value="START ACTIVITY" onclick="timer()">
                 </form>
             </section>
         </main>
         <main class="hidden"></main>
         <aside>
             <h3>Past activities</h3>
-            <p>You haven't logged any activities yet. <br>Complete the form to the left to get started!</p>
+            <p>You haven't logged any activities yet.</p><p id="done"></p><br><p>Complete the form to the left to get started!</p>
         </aside>
+        <script src="main.js"></script>
     </body>
 </html>
