@@ -98,6 +98,14 @@ input#exercise:checked ~ label {
   color: #fd8078;
 }
 
+.time-input {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+
+
 .submit {
   width: fit-content;
   align-self: flex-end;
