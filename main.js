@@ -27,6 +27,8 @@ function timer(){
           document.getElementById('done').innerHTML = `${hourForm.toFixed(0)}:0${minForm.toFixed(0)}:${secForm.toFixed(0)}`;//H:0M:SS
         } else if (hourForm > 0 && hourForm < 10 && minForm < 10 && secForm < 10){
           document.getElementById('done').innerHTML = `${hourForm.toFixed(0)}:0${minForm.toFixed(0)}:0${secForm.toFixed(0)}`;//H:0M:0S
+        } else if (hourForm > 0 && hourForm < 10 && minForm > 10 && secForm < 10){
+            document.getElementById('done').innerHTML = `${hourForm.toFixed(0)}:${minForm.toFixed(0)}:0${secForm.toFixed(0)}`;//H:MM:0S
         }else {
           document.getElementById('done').innerHTML = `${hourForm.toFixed(0)}:${minForm.toFixed(0)}:${secForm.toFixed(0)}`;//HH:MM:SS
         }
