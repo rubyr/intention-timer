@@ -104,6 +104,13 @@ input#exercise:checked ~ label {
   justify-content: space-between;
 }
 
+input[type=text] {
+  background-color: transparent;
+  background-image: url('searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding-left: 40px;
+}
 
 
 .submit {

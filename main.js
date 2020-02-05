@@ -1,7 +1,7 @@
 var globalTimer = null;
 
 function formatTimeString(seconds) {
-  var sec_num = Number(seconds); 
+  var sec_num = Number(seconds);
   var hours   = Math.floor(sec_num / 3600);
   var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
   var seconds = sec_num - (hours * 3600) - (minutes * 60);
@@ -9,22 +9,31 @@ function formatTimeString(seconds) {
   if (seconds < 10) {
     seconds = "0" + seconds;
   }
-  if (minutes < 10 && hours > 0) { 
-    minutes = "0" + minutes; 
+  if (minutes < 10 && hours > 0) {
+    minutes = "0" + minutes;
   }
 
   if (hours > 0)
     return hours + ':' + minutes + ':' + seconds;
   else if (seconds >= 0)
     return minutes + ':' + seconds;
-  else 
+  else
     return
 }
 
 function startTimer() {
+  var min = document.getElementById('minIn').value;
+  var sec = document.getElementById('secIn').value;
+  // if (typeof(min) === 'string' || typeof(sec) === 'string'){
+  //   document.getElementByID('done').innerHTML = 'Please enter valid minute and second inputs!';
+  // }
+  document.getElementById('minIn').addEventListener("keyup", function() {
+    if (this.value === []){
+      document.getElementByID('done').innerHTML = "Please enter a valid number entry for minutes and seconds.";
+      return
+    }
+  });
   if (globalTimer === null) {
-    var min = document.getElementById('minIn').value;
-    var sec = document.getElementById('secIn').value;
     timer(min, sec);
   }
 }
@@ -41,5 +50,5 @@ function timer(min, sec){
     } else {
       document.getElementById('done').innerHTML = formatTimeString(totalTime);
     }
-  }, 1000); 
+  }, 1000);
 }
