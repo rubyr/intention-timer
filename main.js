@@ -3,9 +3,11 @@
 function timer(){
     var min = document.getElementById('minIn').value;
     var sec = document.getElementById('secIn').value;
-    var seconds = (min*60) + sec;
+    var seconds = Number(min*60) + Number(sec);
     var timer = setInterval(function(){
-        document.getElementById('done').innerHTML= `${seconds} seconds left!!!`;
+        var minForm = (seconds - seconds%60)/60;
+        var secForm = Number(seconds%60);
+        document.getElementById('done').innerHTML= `You have ${minForm} minutes and ${secForm} seconds left!!!`;
         seconds--;
         if (seconds < 0) {
             clearInterval(timer);
