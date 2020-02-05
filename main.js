@@ -9,8 +9,12 @@ function timer(){
         var minForm = (seconds - hourForm*3600 - seconds%60)/60;
         var secForm = seconds%60;
         //---------Logic to format hour, minute, and second to 00:00:00--------
-        if (hourForm == 0 && minForm < 10 && secForm < 10){
-          document.getElementById('done').innerHTML = `0${minForm.toFixed(0)}:0${secForm.toFixed(0)}`; //0M:0S
+        if (hourForm == 0 && minForm >= 1 && minForm < 10 && secForm < 10){
+          document.getElementById('done').innerHTML = `${minForm.toFixed(0)}:0${secForm.toFixed(0)}`; //M:0S
+        } else if (hourForm == 0 && minForm == 0 && secForm >= 10){
+          document.getElementById('done').innerHTML = `:${secForm.toFixed(0)}`; //:SS
+        } else if (hourForm == 0 && minForm == 0 && secForm < 10){
+          document.getElementById('done').innerHTML = `:0${secForm.toFixed(0)}`; //:0S
         } else if (hourForm == 0 && minForm < 10 && secForm >= 10){
           document.getElementById('done').innerHTML = `${minForm.toFixed(0)}:${secForm.toFixed(0)}`; //M:SS
         } else if (hourForm == 0 && minForm >= 10 && secForm < 10){
@@ -28,8 +32,8 @@ function timer(){
         } else if (hourForm > 0 && hourForm < 10 && minForm < 10 && secForm < 10){
           document.getElementById('done').innerHTML = `${hourForm.toFixed(0)}:0${minForm.toFixed(0)}:0${secForm.toFixed(0)}`;//H:0M:0S
         } else if (hourForm > 0 && hourForm < 10 && minForm > 10 && secForm < 10){
-            document.getElementById('done').innerHTML = `${hourForm.toFixed(0)}:${minForm.toFixed(0)}:0${secForm.toFixed(0)}`;//H:MM:0S
-        }else {
+          document.getElementById('done').innerHTML = `${hourForm.toFixed(0)}:${minForm.toFixed(0)}:0${secForm.toFixed(0)}`;//H:MM:0S
+        } else {
           document.getElementById('done').innerHTML = `${hourForm.toFixed(0)}:${minForm.toFixed(0)}:${secForm.toFixed(0)}`;//HH:MM:SS
         }
         //---------------------------------------------------------------------
