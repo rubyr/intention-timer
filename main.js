@@ -43,3 +43,50 @@ function timer(min, sec){
     }
   }, 1000); 
 }
+
+var study    = document.querySelector("#study");
+var meditate = document.querySelector("#meditate");
+var exercise = document.querySelector("#exercise");
+
+study.addEventListener('click', studyButton);
+meditate.addEventListener('click', meditateButton);
+exercise.addEventListener('click', exerciseButton);
+
+function clearStudy() {
+  study.classList = "";
+  document.getElementById("studyImgInactive").classList = "";
+  document.getElementById("studyImgActive").classList.add("hidden");
+}
+function studyButton() {
+  clearMeditate();
+  clearExercise();
+  study.classList.add("study-selected");
+  document.getElementById("studyImgInactive").classList.add("hidden");
+  document.getElementById("studyImgActive").classList = "";
+}
+
+function clearMeditate() {
+  meditate.classList = "";
+  document.getElementById("meditateImgInactive").classList = "";
+  document.getElementById("meditateImgActive").classList.add("hidden");
+}
+function meditateButton() {
+  clearStudy();
+  clearExercise();
+  meditate.classList.add("meditate-selected");
+  document.getElementById("meditateImgInactive").classList.add("hidden");
+  document.getElementById("meditateImgActive").classList = "";
+}
+
+function clearExercise() {
+  exercise.classList = "";
+  document.getElementById("exerciseImgActive").classList.add("hidden");
+  document.getElementById("exerciseImgInactive").classList = "";
+}
+function exerciseButton() {
+  clearStudy();
+  clearMeditate();
+  exercise.classList.add("exercise-selected");
+  document.getElementById("exerciseImgInactive").classList.add("hidden");
+  document.getElementById("exerciseImgActive").classList = "";
+}

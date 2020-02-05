@@ -84,18 +84,31 @@ aside {
 .categories section {
   border-radius: 2px;
   border: 1px solid #fff;
+  width: 25%;
+  text-align: center;
+  padding: 5px;
 }
 
-input#study:checked ~ label {
-  color: #b3fd78;
+form img {
+  width: 30px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-input#meditate:checked ~ label {
-  color: #c278fd;
+.study-selected {
+  border: 1px solid #B3FD78 !important;
+  color: #B3FD78;
 }
 
-input#exercise:checked ~ label {
-  color: #fd8078;
+.meditate-selected {
+  border: 1px solid #C278FD !important;
+  color: #C278FD;
+}
+
+.exercise-selected {
+  border: 1px solid #FD8078 !important;
+  color: #FD8078;
 }
 
 .time-input {
