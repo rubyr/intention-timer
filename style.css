@@ -118,9 +118,11 @@ form img {
   flex-direction: row;
   justify-content: space-between;
 }
-
+.time-input div {
+  width: 40%;
+}
 /* Formats form inout boxes to single white line */
-input[type=number], input[type=text] {
+input[type=number]{
   outline: 0;
   border-width: 0 0 1px;
   border-color: white;
@@ -128,7 +130,23 @@ input[type=number], input[type=text] {
   font-family: "Montserrat", sans-serif;
   color: #CBC9CF;
   font-size: 1em;
+  width: 100%;
 }
+
+input[type=text] {
+  outline: 0;
+  width: 100%;
+  border-width: 0 0 1px;
+  border-color: white;
+  background-color: #46424d;
+  font-family: "Montserrat", sans-serif;
+  color: #CBC9CF;
+  font-size: 1em;
+}
+
+
+
+
 
 #buttonBox {
   display: flex;

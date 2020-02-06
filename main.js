@@ -3,14 +3,17 @@ var globalTimer = null;
 var minIn = document.getElementById('minIn');
 var secIn = document.getElementById('secIn');
 
-minIn.addEventListener("keypress", function (e) {
+minIn.addEventListener("keypress", preventLetters)
+secIn.addEventListener("keypress", preventLetters)
+
+function preventLetters(e) {
     // 0 for null values
     // 8 for backspace
     // 48-57 for 0-9 numbers
     if (e.which != 8 && e.which != 0 && e.which < 48 || e.which > 57) {
         e.preventDefault();
     }
-});
+}
 
 function formatTimeString(seconds) {
   var sec_num = Number(seconds);
@@ -25,12 +28,13 @@ function formatTimeString(seconds) {
     minutes = "0" + minutes;
   }
 
-  if (hours > 0)
+  if (hours > 0) {
     return hours + ':' + minutes + ':' + seconds;
-  else if (seconds >= 0)
+  } else if (seconds >= 0){
     return minutes + ':' + seconds;
-  else
+  } else {
     return
+ }
 }
 
 function startTimer() {
