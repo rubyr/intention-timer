@@ -27,8 +27,8 @@ function preventLetters(e) {
     }
 }
 
-function formatTimeString(seconds) {
-  var sec_num = Number(seconds);
+function formatTimeString(sec) {
+  var sec_num = Number(sec);
   var hours   = Math.floor(sec_num / 3600);
   var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
   var seconds = sec_num - (hours * 3600) - (minutes * 60);
@@ -158,7 +158,7 @@ function meditateButton() {
 
 function clearExercise() {
   exercise.classList = "";
-  exercise.id = ""
+  exercise.id = "";
   document.getElementById("exerciseImgActive").classList.add("hidden");
   document.getElementById("exerciseImgInactive").classList = "";
 }
