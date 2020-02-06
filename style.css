@@ -28,9 +28,9 @@ header {
 
 h1 {
   margin: 0;
+  padding: 10px 0;
   font-size: 1.5em;
   font-weight: lighter;
-  margin: 10px 0;
 }
 
 main {
@@ -55,7 +55,7 @@ aside {
 }
 
 .container {
-  /* min-height: 100vh; */
+  min-height: 100vh;
   margin: 0;
   padding: 0;
   display: flex;
@@ -69,11 +69,6 @@ aside {
 .card {
   border-radius: 10px;
   background-color: #46424d;
-}
-
-.fill-y {
-  display: flex;
-  align-content: stretch;
 }
 
 .categories {
