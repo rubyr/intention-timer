@@ -16,8 +16,7 @@
       <h1>INTENTION TIMER</h1>
     </header>
     <section class="container">
-      <main class="hidden">
-        <h2 id="done"></h2>
+      <main id="inputPage">
         <h3>New Activity</h3>
         <section class="card fullscreen">
           <form action="">
@@ -70,16 +69,28 @@
             </section>
             <section>
               <p>What would you like to accomplish during this time?</p>
-              <input type="text" name="description" />
+              <input type="text" name="description" id="description" />
+              <section id="descErr" class="error-text hidden">
+                <img src="assets/warning.svg" alt="">
+                <p>A description is required.</p>
+              </section>
             </section>
             <section class="time-input">
                 <div>
                     <p>Minutes</p>
                     <input type="number" ID="minIn" type="text">
+                    <section id="minErr" class="error-text hidden">
+                      <img src="assets/warning.svg" alt="">
+                      <p>Please enter a time.</p>
+                    </section>
                 </div>
                 <div>
                     <p>Seconds</p>
                     <input type="number" ID="secIn" type="text">
+                    <section id="secErr" class="error-text hidden">
+                      <img src="assets/warning.svg" alt="">
+                      <p>Please enter a time.</p>
+                    </section>
                 </div>
             </section>
             <section id='buttonBox'>
@@ -89,7 +100,9 @@
         </section>
       </main>
       <script src="main.js"></script>
-      <main></main>
+      <main id="timerPage" class="hidden">
+        <h2 id="done"></h2>
+      </main>
       <aside>
         <h3>Past activities</h3>
         <p>

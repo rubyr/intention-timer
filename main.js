@@ -2,9 +2,12 @@ var globalTimer = null;
 
 var minIn = document.getElementById('minIn');
 var secIn = document.getElementById('secIn');
+var desc = document.getElementById('description');
+var inputPage = document.getElementById('inputPage');
+var timerPage = document.getElementById('timerPage');
 
-minIn.addEventListener("keypress", preventLetters)
-secIn.addEventListener("keypress", preventLetters)
+minIn.addEventListener("keypress", preventLetters);
+secIn.addEventListener("keypress", preventLetters);
 
 function preventLetters(e) {
     // 0 for null values
@@ -38,13 +41,30 @@ function formatTimeString(seconds) {
 }
 
 function startTimer() {
-  var min = minIn.value;
-  var sec = secIn.value;
-  if (!minIn.value && !secIn.value){
-    document.getElementById('done').innerHTML = "Please enter a valid number entry for minutes and seconds.";
-    return
-   } else if (globalTimer === null) {
+  var descFilled = true;
+  if (!desc.value) {
+    descFilled = false;
+    document.getElementById('descErr').classList.remove('hidden');
+  }
+  var minFilled = true;
+  if (!minIn.value){
+    minFilled = false;
+    document.getElementById('minErr').classList.remove('hidden');
+  } 
+  var secFilled = true;
+  if (!secIn.value){
+    secFilled = false;
+    document.getElementById('secErr').classList.remove('hidden');
+  } 
+  var categorySelected = true; 
+  
+  if (globalTimer === null && descFilled && (minFilled || secFilled)) {
+    inputPage.classList.add('hidden');
+    timerPage.classList.remove('hidden');
     timer(min, sec);
+    desc.value = "";
+    minIn.value = "";
+    secIn.value = "";
   }
 }
 
