@@ -16,7 +16,7 @@
       <h1>INTENTION TIMER</h1>
     </header>
     <section class="container">
-      <main id="inputPage">
+      <main class="hidden" id="inputPage">
         <h3>New Activity</h3>
         <section class="card fullscreen">
           <form action="">
@@ -97,15 +97,24 @@
                     </section>
                 </div>
             </section>
-            <section id='buttonBox'>
-              <input type="button" value="START ACTIVITY" onclick="startTimer()" id='startButton'>
+            <section id='startButtonBox'>
+              <input type="button" value="START ACTIVITY" onclick="startTimer()" class='button'>
             </section>
           </form>
         </section>
       </main>
       <script src="main.js"></script>
-      <main id="timerPage" class="hidden">
-        <h2 id="done"></h2>
+      <main id="timerPage">
+        <h3>Current Activity</h3>
+        <section class='card fullscreen'>
+          <h2 id="activityOnTimer">Activity Name Here</h2>
+          <p id="done">50:34</p>
+          <section id='containerCircleButton'>
+            <input id='startCircle' type='button' value='START'>
+          </section>
+          <section id='logButtonBox'>
+            <input type='button' value="LOG ACTIVITY" class='button'>
+          </section>
       </main>
       <aside>
         <h3>Past activities</h3>
