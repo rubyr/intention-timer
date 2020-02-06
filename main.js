@@ -28,14 +28,13 @@ function startTimer() {
   //   document.getElementByID('done').innerHTML = 'Please enter valid minute and second inputs!';
   // }
   document.getElementById('minIn').addEventListener("keyup", function() {
-    if (this.value === []){
+    if (this.value == []){
       document.getElementByID('done').innerHTML = "Please enter a valid number entry for minutes and seconds.";
       return
     }
-  });
-  if (globalTimer === null) {
+    else if (globalTimer === null) {
     timer(min, sec);
-  }
+  }});
 }
 
 function timer(min, sec){
