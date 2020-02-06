@@ -19,7 +19,7 @@ body {
 
 header {
   width: 100%;
-  /* max-height: 50px; */
+  max-height: 50px;
   margin: 0;
   color: #fff;
   background-color: #46424d;
@@ -28,34 +28,37 @@ header {
 
 h1 {
   margin: 0;
+  padding: 10px 0;
   font-size: 1.5em;
   font-weight: lighter;
-  margin: 10px 0;
 }
 
 main {
   flex: 2 0px;
   padding: 10px 20px;
+  height: calc(100vh - 50px);
   color: #cbc9cf;
 }
 
 form {
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   width: 60%;
+  height: calc(100% - 30px);
   margin: 0 auto;
-  padding: 30px 0;
+  /* padding: 30px 0; */
 }
 
 aside {
   flex: 1 0 0;
   color: #cbc9cf;
   padding: 10px 20px;
-  border-left: 5px solid #46424d;
+  border-left: 2px solid #46424d;
 }
 
 .container {
-  /* min-height: 100vh; */
+  min-height: calc(100vh - 50px);
   margin: 0;
   padding: 0;
   display: flex;
@@ -71,9 +74,8 @@ aside {
   background-color: #46424d;
 }
 
-.fill-y {
-  display: flex;
-  align-content: stretch;
+.fullscreen {
+  height: 85%;
 }
 
 .categories {
@@ -97,18 +99,18 @@ form img {
 }
 
 .study-selected {
-  border: 1px solid #B3FD78 !important;
-  color: #B3FD78;
+  border: 1px solid #b3fd78 !important;
+  color: #b3fd78;
 }
 
 .meditate-selected {
-  border: 1px solid #C278FD !important;
-  color: #C278FD;
+  border: 1px solid #c278fd !important;
+  color: #c278fd;
 }
 
 .exercise-selected {
-  border: 1px solid #FD8078 !important;
-  color: #FD8078;
+  border: 1px solid #fd8078 !important;
+  color: #fd8078;
 }
 
 .time-input {
@@ -116,8 +118,6 @@ form img {
   flex-direction: row;
   justify-content: space-between;
 }
-
-
 
 .submit {
   width: fit-content;
