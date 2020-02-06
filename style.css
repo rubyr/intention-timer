@@ -144,24 +144,36 @@ input[type=text] {
   font-size: 1em;
 }
 
-
-
-
-
-#buttonBox {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 50px;``
+#activityOnTimer {
+  text-align: center;
 }
 
-#startButton {
-  background-color: ##FFF;
+#startButtonBox {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 50px;
+}
+
+#logButtonBox {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+#done {
+  display: flex;
+  justify-content: center;
+  font-size: 3em;
+}
+.button {
+  background-color: #FFF;
   padding: 10px 35px;
   text-align: center;
   border-radius: 4px;
   display: inline-block;
   font-size: 16px;
 }
+
 
 .submit {
   width: fit-content;
