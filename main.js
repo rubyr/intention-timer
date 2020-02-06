@@ -1,5 +1,17 @@
 var globalTimer = null;
 
+var minIn = document.getElementById('minIn');
+var secIn = document.getElementById('secIn');
+
+minIn.addEventListener("keypress", function (e) {
+    // 0 for null values
+    // 8 for backspace
+    // 48-57 for 0-9 numbers
+    if (e.which != 8 && e.which != 0 && e.which < 48 || e.which > 57) {
+        e.preventDefault();
+    }
+});
+
 function formatTimeString(seconds) {
   var sec_num = Number(seconds);
   var hours   = Math.floor(sec_num / 3600);
@@ -22,32 +34,77 @@ function formatTimeString(seconds) {
 }
 
 function startTimer() {
-  var min = document.getElementById('minIn').value;
-  var sec = document.getElementById('secIn').value;
-  // if (typeof(min) === 'string' || typeof(sec) === 'string'){
-  //   document.getElementByID('done').innerHTML = 'Please enter valid minute and second inputs!';
-  // }
-  document.getElementById('minIn').addEventListener("keyup", function() {
-    if (this.value == []){
-      document.getElementByID('done').innerHTML = "Please enter a valid number entry for minutes and seconds.";
-      return
-    }
-    else if (globalTimer === null) {
+  var min = minIn.value;
+  var sec = secIn.value;
+  if (!minIn.value && !secIn.value){
+    document.getElementById('done').innerHTML = "Please enter a valid number entry for minutes and seconds.";
+    return
+   } else if (globalTimer === null) {
     timer(min, sec);
-  }});
+  }
 }
 
-function timer(min, sec){
-  var totalTime = Number(min*60) + Number(sec);
-  document.getElementById('done').innerHTML = formatTimeString(totalTime);
-  globalTimer = setInterval(function(){
+function timer(min, sec) {
+  var totalTime = Number(min * 60) + Number(sec);
+  document.getElementById("done").innerHTML = formatTimeString(totalTime);
+  globalTimer = setInterval(function() {
     totalTime--;
     if (totalTime < 0) {
-        clearInterval(globalTimer);
-        document.getElementById('done').innerHTML= `Time is up! You waited ${min + ((min) ? "minutes and " : "")}${sec} seconds.`;
-        globalTimer = null;
+      clearInterval(globalTimer);
+      document.getElementById(
+        "done"
+      ).innerHTML = `Time is up! You waited ${min +
+        (min ? "minutes and " : "")}${sec} seconds.`;
+      globalTimer = null;
     } else {
-      document.getElementById('done').innerHTML = formatTimeString(totalTime);
+      document.getElementById("done").innerHTML = formatTimeString(totalTime);
     }
   }, 1000);
+}
+
+var study = document.querySelector("#study");
+var meditate = document.querySelector("#meditate");
+var exercise = document.querySelector("#exercise");
+
+study.addEventListener("click", studyButton);
+meditate.addEventListener("click", meditateButton);
+exercise.addEventListener("click", exerciseButton);
+
+function clearStudy() {
+  study.classList = "";
+  document.getElementById("studyImgInactive").classList = "";
+  document.getElementById("studyImgActive").classList.add("hidden");
+}
+function studyButton() {
+  clearMeditate();
+  clearExercise();
+  study.classList.add("study-selected");
+  document.getElementById("studyImgInactive").classList.add("hidden");
+  document.getElementById("studyImgActive").classList = "";
+}
+
+function clearMeditate() {
+  meditate.classList = "";
+  document.getElementById("meditateImgInactive").classList = "";
+  document.getElementById("meditateImgActive").classList.add("hidden");
+}
+function meditateButton() {
+  clearStudy();
+  clearExercise();
+  meditate.classList.add("meditate-selected");
+  document.getElementById("meditateImgInactive").classList.add("hidden");
+  document.getElementById("meditateImgActive").classList = "";
+}
+
+function clearExercise() {
+  exercise.classList = "";
+  document.getElementById("exerciseImgActive").classList.add("hidden");
+  document.getElementById("exerciseImgInactive").classList = "";
+}
+function exerciseButton() {
+  clearStudy();
+  clearMeditate();
+  exercise.classList.add("exercise-selected");
+  document.getElementById("exerciseImgInactive").classList.add("hidden");
+  document.getElementById("exerciseImgActive").classList = "";
 }

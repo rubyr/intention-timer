@@ -1,63 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:300,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
     <title>Intention Timer</title>
-
-</head>
-    <body>
-        <section class="container">
-            <header>
-                <h1>INTENTION TIMER</h1>
-            </header>
-            <main>
-                <h2 id="done"></h2>
-                <h3>New Activity</h3>
-                <section class="card fill-v">
-                    <form action="">
-                        <p>Select a category:</p>
-                        <section class="categories">
-                            <section class="">
-                                <input type="radio" name="category" id="study">
-                                <label for="study">Study</label>
-                            </section>
-                            <section>
-                                <input type="radio" name="category" id="meditate">
-                                <label for="meditate">Meditate</label>
-                            </section>
-                            <section>
-                                <input type="radio" name="category" id="exercise">
-                                <label for="exercise">Exercise</label>
-                            </section>
-                        </section>
-                        <p>What would you like to accomplish during this time?</p>
-                        <input type="text" name="description">
-                        <section class="time-input">
-                            <div>
-                                <p>Minutes</p>
-                                <input type="number" ID="minIn" type="text">
-                            </div>
-                            <div>
-                                <p>Seconds</p>
-                                <input type="number" ID="secIn" type="text">
-                            </div>
-                        </section>
-                        <section id='buttonBox'>
-                        <input type="button" value="START ACTIVITY" onclick="startTimer()" id='startButton'>
-                        </section>
-                    </form>
+  </head>
+  <body>
+    <header>
+      <h1>INTENTION TIMER</h1>
+    </header>
+    <section class="container">
+      <main>
+        <h2 id="done"></h2>
+        <h3>New Activity</h3>
+        <section class="card fullscreen">
+          <form action="">
+            <section>
+              <p>Select a category:</p>
+              <section class="categories">
+                <section id="study">
+                  <img
+                    src="assets/study.svg"
+                    alt="Study"
+                    id="studyImgInactive"
+                  />
+                  <img
+                    src="assets/study-active.svg"
+                    alt="Study"
+                    id="studyImgActive"
+                    class="hidden"
+                  />
+                  <label for="study">Study</label>
                 </section>
-            </main>
-            <script src="main.js"></script>
-            <main class="hidden"></main>
-            <aside>
-                <h3>Past activities</h3>
-                <p>You haven't logged any activities yet. <br>Complete the form to the left to get started!</p>
-            </aside>
+                <section id="meditate">
+                  <img
+                    src="assets/meditate.svg"
+                    alt="Meditate"
+                    id="meditateImgInactive"
+                  />
+                  <img
+                    src="assets/meditate-active.svg"
+                    alt="Meditate"
+                    id="meditateImgActive"
+                    class="hidden"
+                  />
+                  <label for="meditate">Meditate</label>
+                </section>
+                <section id="exercise">
+                  <img
+                    src="assets/exercise.svg"
+                    alt="Exercise"
+                    id="exerciseImgInactive"
+                  />
+                  <img
+                    src="assets/exercise-active.svg"
+                    alt="Exercise"
+                    id="exerciseImgActive"
+                    class="hidden"
+                  />
+                  <label for="exercise">Exercise</label>
+                </section>
+              </section>
+            </section>
+            <section>
+              <p>What would you like to accomplish during this time?</p>
+              <input type="text" name="description" />
+            </section>
+            <section class="time-input">
+                <div>
+                    <p>Minutes</p>
+                    <input type="number" ID="minIn" type="text">
+                </div>
+                <div>
+                    <p>Seconds</p>
+                    <input type="number" ID="secIn" type="text">
+                </div>
+            </section>
+            <section id='buttonBox'>
+              <input type="button" value="START ACTIVITY" onclick="startTimer()" id='startButton'>
+            </section>
+          </form>
         </section>
-    </body>
+      </main>
+      <script src="main.js"></script>
+      <main class="hidden"></main>
+      <aside>
+        <h3>Past activities</h3>
+        <p>
+          You haven't logged any activities yet. <br />Complete the form to the
+          left to get started!
+        </p>
+      </aside>
+    </section>
+  </body>
 </html>
