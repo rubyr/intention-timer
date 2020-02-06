@@ -73,20 +73,18 @@
               <input type="text" name="description" />
             </section>
             <section class="time-input">
-              <div>
-                <p>Minutes</p>
-                <input id="minIn" type="text" />
-              </div>
-              <div>
-                <p>Seconds</p>
-                <input id="secIn" type="text" />
-              </div>
+                <div>
+                    <p>Minutes</p>
+                    <input type="number" ID="minIn" type="text">
+                </div>
+                <div>
+                    <p>Seconds</p>
+                    <input type="number" ID="secIn" type="text">
+                </div>
             </section>
-            <input
-              type="button"
-              value="START ACTIVITY"
-              onclick="startTimer()"
-            />
+            <section id='buttonBox'>
+              <input type="button" value="START ACTIVITY" onclick="startTimer()" id='startButton'>
+            </section>
           </form>
         </section>
       </main>

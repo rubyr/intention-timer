@@ -119,6 +119,32 @@ form img {
   justify-content: space-between;
 }
 
+/* Formats form inout boxes to single white line */
+input[type=number], input[type=text] {
+  outline: 0;
+  border-width: 0 0 1px;
+  border-color: white;
+  background-color: #46424d;
+  font-family: "Montserrat", sans-serif;
+  color: #CBC9CF;
+  font-size: 1em;
+}
+
+#buttonBox {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 50px;``
+}
+
+#startButton {
+  background-color: ##FFF;
+  padding: 10px 35px;
+  text-align: center;
+  border-radius: 4px;
+  display: inline-block;
+  font-size: 16px;
+}
+
 .submit {
   width: fit-content;
   align-self: flex-end;
