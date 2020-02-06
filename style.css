@@ -179,3 +179,19 @@ input[type=text] {
   width: fit-content;
   align-self: flex-end;
 }
+
+.error-text {
+  color: #EFB7EC;
+  position: absolute;
+  margin: 5px 0 0 0;
+}
+
+.error-text>img {
+  width: 15px;
+  margin: 0 5px 0 0;
+  float: left;
+}
+
+.error-text>p {
+  display:inline;
+}
