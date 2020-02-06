@@ -5,6 +5,15 @@ var secIn = document.getElementById('secIn');
 var desc = document.getElementById('description');
 var inputPage = document.getElementById('inputPage');
 var timerPage = document.getElementById('timerPage');
+var currentActivity;
+
+class Activity {
+  constructor(category, description, seconds) {
+    this.category = category;
+    this.description = description;
+    this.time = seconds;
+  }
+}
 
 minIn.addEventListener("keypress", preventLetters);
 secIn.addEventListener("keypress", preventLetters);
@@ -36,7 +45,7 @@ function formatTimeString(seconds) {
   } else if (seconds >= 0){
     return minutes + ':' + seconds;
   } else {
-    return
+    return;
  }
 }
 
@@ -47,7 +56,11 @@ function resetErrors() {
   document.getElementById('catErr') .classList.add('hidden');
 }
 
-function startTimer() {
+function getCategoryString(categoryElement) {
+  return categoryElement.children[2].innerText.toLowerCase();
+}
+
+function switchPage() {
   var descFilled = true;
   if (!desc.value) {
     descFilled = false;
@@ -72,15 +85,23 @@ function startTimer() {
   if (globalTimer === null && categorySelected && descFilled && (minFilled || secFilled)) {
     inputPage.classList.add('hidden');
     timerPage.classList.remove('hidden');
-    timer(min, sec);
+    currentActivity = new Activity(
+      getCategoryString(document.getElementById('selectedCategory')), 
+      desc.value, 
+      Number(minIn.value * 60) + Number(secIn.value)
+    );
     desc.value = "";
     minIn.value = "";
     secIn.value = "";
   }
 }
 
-function timer(min, sec) {
-  var totalTime = Number(min * 60) + Number(sec);
+function startTimer() {
+  timer(currentActivity.time);
+}
+
+function timer(sec) {
+  var totalTime = Number(sec);
   document.getElementById("done").innerHTML = formatTimeString(totalTime);
   globalTimer = setInterval(function() {
     totalTime--;
