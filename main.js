@@ -40,6 +40,13 @@ function formatTimeString(seconds) {
  }
 }
 
+function resetErrors() {
+  document.getElementById('descErr').classList.add('hidden');
+  document.getElementById('minErr') .classList.add('hidden');
+  document.getElementById('secErr') .classList.add('hidden');
+  document.getElementById('catErr') .classList.add('hidden');
+}
+
 function startTimer() {
   var descFilled = true;
   if (!desc.value) {
@@ -57,8 +64,12 @@ function startTimer() {
     document.getElementById('secErr').classList.remove('hidden');
   } 
   var categorySelected = true; 
-  
-  if (globalTimer === null && descFilled && (minFilled || secFilled)) {
+  if (document.getElementById("selectedCategory") === null) {
+    categorySelected = false;
+    document.getElementById('catErr').classList.remove('hidden');
+  }
+
+  if (globalTimer === null && categorySelected && descFilled && (minFilled || secFilled)) {
     inputPage.classList.add('hidden');
     timerPage.classList.remove('hidden');
     timer(min, sec);
@@ -95,7 +106,8 @@ meditate.addEventListener("click", meditateButton);
 exercise.addEventListener("click", exerciseButton);
 
 function clearStudy() {
-  study.classList = "";
+  study.classList = "";  
+  study.id = "";
   document.getElementById("studyImgInactive").classList = "";
   document.getElementById("studyImgActive").classList.add("hidden");
 }
@@ -103,12 +115,14 @@ function studyButton() {
   clearMeditate();
   clearExercise();
   study.classList.add("study-selected");
+  study.id = "selectedCategory";
   document.getElementById("studyImgInactive").classList.add("hidden");
   document.getElementById("studyImgActive").classList = "";
 }
 
 function clearMeditate() {
   meditate.classList = "";
+  meditate.id = "";
   document.getElementById("meditateImgInactive").classList = "";
   document.getElementById("meditateImgActive").classList.add("hidden");
 }
@@ -116,12 +130,14 @@ function meditateButton() {
   clearStudy();
   clearExercise();
   meditate.classList.add("meditate-selected");
+  meditate.id = "selectedCategory";
   document.getElementById("meditateImgInactive").classList.add("hidden");
   document.getElementById("meditateImgActive").classList = "";
 }
 
 function clearExercise() {
   exercise.classList = "";
+  exercise.id = ""
   document.getElementById("exerciseImgActive").classList.add("hidden");
   document.getElementById("exerciseImgInactive").classList = "";
 }
@@ -129,6 +145,7 @@ function exerciseButton() {
   clearStudy();
   clearMeditate();
   exercise.classList.add("exercise-selected");
+  exercise.id = "selectedCategory";
   document.getElementById("exerciseImgInactive").classList.add("hidden");
   document.getElementById("exerciseImgActive").classList = "";
 }
