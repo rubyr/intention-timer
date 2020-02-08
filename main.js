@@ -119,15 +119,9 @@ function timer(sec) {
   }, 1000);
 }
 
-// DEBUG ------------
-newCard(new Activity("meditate", "Deep breathing", 16327));
-newCard(new Activity("meditate", "Deep breathing", 16327));
-newCard(new Activity("meditate", "Deep breathing", 16327));
-newCard(new Activity("meditate", "Deep breathing", 16327));
-newCard(new Activity("study", "watch Star Wars Revenge of the Sith", 8400));
-newCard(new Activity("study", "watch Star Wars Revenge of the Sith", 8400));
-newCard(new Activity("study", "watch Star Wars Revenge of the Sith", 8400));
-newCard(new Activity("study", "watch Star Wars Revenge of the Sith", 8400));
+function upperFirstLetter(str) {
+  return str[0].toUpperCase() + str.slice(1);
+}
 
 function newCard(activity) {
   if (document.getElementById("noActivities")) {
@@ -137,7 +131,7 @@ function newCard(activity) {
   aside.innerHTML += `
     <section class="card activity">
       <div class="stripe ${activity.category}"></div>
-      <h3>${activity.category}</h3>
+      <h3>${upperFirstLetter(activity.category)}</h3>
       <p class="time">${timeString}</p>
       <p class="description">${activity.description}</p>
     </section>
