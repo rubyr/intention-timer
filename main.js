@@ -6,6 +6,7 @@ var desc = document.getElementById('description');
 var inputPage = document.getElementById('inputPage');
 var timerPage = document.getElementById('timerPage');
 var currentActivity;
+var aside = document.querySelector("aside");
 
 class Activity {
   constructor(category, description, seconds) {
@@ -116,6 +117,41 @@ function timer(sec) {
       document.getElementById("done").innerHTML = formatTimeString(totalTime);
     }
   }, 1000);
+}
+
+function upperFirstLetter(str) {
+  return str[0].toUpperCase() + str.slice(1);
+}
+
+function newCard(activity) {
+  if (document.getElementById("noActivities")) {
+    document.getElementById("noActivities").remove();
+  }
+  var timeString = getCardTimeString(activity.time);
+  aside.innerHTML += `
+    <section class="card activity">
+      <div class="stripe ${activity.category}"></div>
+      <h3>${upperFirstLetter(activity.category)}</h3>
+      <p class="time">${timeString}</p>
+      <p class="description">${activity.description}</p>
+    </section>
+  `;
+}
+
+function getCardTimeString(seconds) {
+  var time = formatTimeString(seconds);
+  time = time.split(":").reverse();
+  var timeString = "";
+  if (time[0] != 0 && time[0] != undefined) { // weak matching because time[0] is a string
+    timeString = `${time[0]} SECS`;
+  }
+  if (time[1] != 0 && time[1] != undefined) {
+    timeString = `${time[1]} MINS ` + timeString;
+  }
+  if (time[2] != 0 && time[2] != undefined) {
+    timeString = `${time[2]} HOURS ` + timeString;
+  }
+  return timeString;
 }
 
 var study = document.querySelector("#study");

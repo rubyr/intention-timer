@@ -29,7 +29,7 @@ header {
 h1 {
   margin: 0;
   padding: 10px 0;
-  font-size: 1.5em;
+  font-size: 1.5rem;
   font-weight: lighter;
 }
 
@@ -55,6 +55,7 @@ aside {
   color: #cbc9cf;
   padding: 10px 20px;
   border-left: 2px solid #46424d;
+  overflow-y: scroll;
 }
 
 .container {
@@ -72,6 +73,7 @@ aside {
 .card {
   border-radius: 10px;
   background-color: #46424d;
+  box-shadow: 10px 10px 0px 0px rgba(0,0,0,0.15);
 }
 
 .fullscreen {
@@ -129,7 +131,7 @@ input[type=number]{
   background-color: #46424d;
   font-family: "Montserrat", sans-serif;
   color: #CBC9CF;
-  font-size: 1em;
+  font-size: 1rem;
   width: 100%;
 }
 
@@ -141,7 +143,7 @@ input[type=text] {
   background-color: #46424d;
   font-family: "Montserrat", sans-serif;
   color: #CBC9CF;
-  font-size: 1em;
+  font-size: 1rem;
 }
 
 #activityOnTimer {
@@ -165,7 +167,7 @@ input[type=text] {
   display: flex;
   justify-content: center;
   margin-top: 5px;
-  font-size: 4em;
+  font-size: 4rem;
 }
 .button {
   background-color: #FFF;
@@ -184,7 +186,7 @@ input[type=text] {
 #startCircle {
   display: flex;
   justify-content: center;
-  font-size: 1.7em;
+  font-size: 1.7rem;
   font-weight: 300;
   background-color: #46424d;
   border-radius: 100%;
@@ -213,4 +215,42 @@ input[type=text] {
 
 .error-text>p {
   display:inline;
+}
+
+.activity {
+  margin: 15px 0 0 0;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.activity h3 {
+  margin: 5px 0;
+  font-weight: bolder;
+}
+
+.activity>.time {
+  margin: 2px 0;
+  font-size: 0.9rem;
+}
+
+.activity>.description {
+  margin: 10px 0;
+  font-weight: 300;
+}
+
+.stripe {
+  float: right;
+  margin: 5px;
+  border: 3px solid white;
+  border-radius: 1000px;
+  height: 25px;
+}
+.meditate {
+  border-color: #c278fd;
+}
+.study {
+  border-color: #b3fd78;
+}
+.exercise {
+  border-color: #fd8078;
 }
