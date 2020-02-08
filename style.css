@@ -55,6 +55,7 @@ aside {
   color: #cbc9cf;
   padding: 10px 20px;
   border-left: 2px solid #46424d;
+  overflow-y: scroll;
 }
 
 .container {
@@ -72,6 +73,7 @@ aside {
 .card {
   border-radius: 10px;
   background-color: #46424d;
+  box-shadow: 10px 10px 0px 0px rgba(0,0,0,0.15);
 }
 
 .fullscreen {
@@ -216,7 +218,7 @@ input[type=text] {
 }
 
 .activity {
-  margin: 10px 0 0 0;
+  margin: 15px 0 0 0;
   padding: 5px 10px;
   border-radius: 5px;
 }
@@ -227,7 +229,13 @@ input[type=text] {
 }
 
 .activity>.time {
-  
+  margin: 2px 0;
+  font-size: 0.9em;
+}
+
+.activity>.description {
+  margin: 10px 0;
+  font-weight: 300;
 }
 
 .stripe {
@@ -239,5 +247,10 @@ input[type=text] {
 }
 .meditate {
   border-color: #c278fd;
-  
+}
+.study {
+  border-color: #b3fd78;
+}
+.exercise {
+  border-color: #fd8078;
 }

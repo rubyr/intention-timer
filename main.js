@@ -121,6 +121,13 @@ function timer(sec) {
 
 // DEBUG ------------
 newCard(new Activity("meditate", "Deep breathing", 16327));
+newCard(new Activity("meditate", "Deep breathing", 16327));
+newCard(new Activity("meditate", "Deep breathing", 16327));
+newCard(new Activity("meditate", "Deep breathing", 16327));
+newCard(new Activity("study", "watch Star Wars Revenge of the Sith", 8400));
+newCard(new Activity("study", "watch Star Wars Revenge of the Sith", 8400));
+newCard(new Activity("study", "watch Star Wars Revenge of the Sith", 8400));
+newCard(new Activity("study", "watch Star Wars Revenge of the Sith", 8400));
 
 function newCard(activity) {
   if (document.getElementById("noActivities")) {
