@@ -180,6 +180,9 @@ input[type=text] {
 #done {
   display: flex;
   justify-content: center;
+  font-family: Verdana;
+  font-weight: 800;
+  color: #FFFFFF;
   margin-top: 5px;
   font-size: 4rem;
 }
@@ -265,6 +268,21 @@ input[type=text] {
   border: 3px solid white;
   border-radius: 1000px;
   height: 25px;
+}
+#favorite {
+  float: right;
+  top: 60px;
+  cursor: pointer;
+  outline: none;
+  font-size: 3rem;
+  font-weight: 300;
+  background-color: #FFF;
+  color: #000000;
+}
+
+#favorite:focus {
+  background-color: red;
+  color: #FFFFFF;
 }
 .meditate {
   border-color: #c278fd;

@@ -93,13 +93,13 @@ function switchPage() {
       desc.value,
       Number(minIn.value * 60) + Number(secIn.value)
     );
+    document.getElementById('done').innerHTML=`${formatTimeString(currentActivity.time)}`
+    document.getElementById('activityOnTimer').innerHTML = desc.value;
+    document.getElementById('startCircle').value = 'START!';
+    document.getElementById('startCircle').classList.add(currentActivity.category);
     desc.value = "";
     minIn.value = "";
     secIn.value = "";
-    document.getElementById('done').innerHTML=`${formatTimeString(currentActivity.time)}`
-    document.getElementById('activityOnTimer').innerHTML = upperFirstLetter(currentActivity.category);
-    document.getElementById('startCircle').value = 'START!';
-    document.getElementById('startCircle').classList.add(currentActivity.category);
   }
 
 }
@@ -141,9 +141,10 @@ function newCard() {
   aside.innerHTML += `
     <section class="card activity">
       <div class="stripe ${currentActivity.category}"></div>
+
       <h3>${upperFirstLetter(currentActivity.category)}</h3>
       <p class="time">${timeString}</p>
-      <p class="description">${currentActivity.description}</p>
+      <p class="description">${currentActivity.description}<input id='favorite' type='button' value='♥︎' onclick=''></p>
     </section>
   `;
   timerPage.classList.add('hidden');
@@ -155,15 +156,14 @@ function newCard() {
 function showHome(){
   completePage.classList.add('hidden');
   inputPage.classList.remove('hidden');
-  desc.value = "";
-  minIn.value = "";
-  secIn.value = "";
+  // desc.value = "";
+  // minIn.value = "";
+  // secIn.value = "";
   clearStudy()
   clearMeditate()
   clearExercise()
   resetErrors()
 }
-
 
 function getCardTimeString(seconds) {
   var time = formatTimeString(seconds);
