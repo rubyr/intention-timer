@@ -129,7 +129,12 @@ function newCard() {
   if (document.getElementById("noActivities")) {
     document.getElementById("noActivities").remove();
   }
-
+  var timeDisplay = document.getElementById('done').innerHTML;
+  var warn = document.getElementById('warn');
+  warn.innerHTML = `You still have time to wait! left to wait!`;
+  if (!(timeDisplay === '0:00')) {
+    return warn.classList.remove('hidden')
+  }
   currentActivity.hasLogged = true;
   var timeString = getCardTimeString(currentActivity.time);
   var congrats = document.getElementById('congrats')
