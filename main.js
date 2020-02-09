@@ -144,7 +144,7 @@ function newCard() {
 
       <h3>${upperFirstLetter(currentActivity.category)}</h3>
       <p class="time">${timeString}</p>
-      <p class="description">${currentActivity.description}<input id='favorite' type='button' value='♥︎' onclick=''></p>
+      <p class="description">${currentActivity.description}</p>
     </section>
   `;
   timerPage.classList.add('hidden');
