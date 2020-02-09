@@ -107,16 +107,25 @@
         <h3>Current Activity</h3>
         <section class='card fullscreen'>
           <h2 id="activityOnTimer">Activity Name Here</h2>
-          <p id="done">50:34</p>
+          <p id="done"></p>
           <section id='containerCircleButton'>
-            <input id='startCircle' type='button' value='START'>
+            <input id='startCircle' type='button' value='START' onclick="startTimer()">
           </section>
           <section id='logButtonBox'>
-            <input type='button' value="LOG ACTIVITY" class='button'>
+            <input type='button' value="LOG ACTIVITY" class='button' onclick="newCard()">
+            <p class='warn'></p>
           </section>
       </main>
+      <main id="completePage" class="hidden">
+        <h3 id="congrats">Completed Activity</h3>
+        <section class='card fullscreen'>
+          <section id='createNewAct'>
+            <input type='button' value="CREATE A NEW ACTIVITY" class='button' onclick="showHome()">
+          </section>
+        </section>
+      </main>
       <aside>
-        <section id="noActivities">  
+        <section id="noActivities">
           <h3>Past activities</h3>
           <p>
             You haven't logged any activities yet. <br />Complete the form to the

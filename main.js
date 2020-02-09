@@ -5,6 +5,7 @@ var secIn = document.getElementById('secIn');
 var desc = document.getElementById('description');
 var inputPage = document.getElementById('inputPage');
 var timerPage = document.getElementById('timerPage');
+var completePage = document.getElementById('completePage')
 var currentActivity;
 var aside = document.querySelector("aside");
 
@@ -13,6 +14,7 @@ class Activity {
     this.category = category;
     this.description = description;
     this.time = seconds;
+    this.hasLogged = false;
   }
 }
 
@@ -71,13 +73,13 @@ function switchPage() {
   if (!minIn.value){
     minFilled = false;
     document.getElementById('minErr').classList.remove('hidden');
-  } 
+  }
   var secFilled = true;
   if (!secIn.value){
     secFilled = false;
     document.getElementById('secErr').classList.remove('hidden');
-  } 
-  var categorySelected = true; 
+  }
+  var categorySelected = true;
   if (document.getElementById("selectedCategory") === null) {
     categorySelected = false;
     document.getElementById('catErr').classList.remove('hidden');
@@ -87,8 +89,8 @@ function switchPage() {
     inputPage.classList.add('hidden');
     timerPage.classList.remove('hidden');
     currentActivity = new Activity(
-      getCategoryString(document.getElementById('selectedCategory')), 
-      desc.value, 
+      getCategoryString(document.getElementById('selectedCategory')),
+      desc.value,
       Number(minIn.value * 60) + Number(secIn.value)
     );
     desc.value = "";
@@ -102,16 +104,13 @@ function startTimer() {
 }
 
 function timer(sec) {
+  clearInterval(globalTimer) //Resets clock so it doesn't stutter with previous clicks
   var totalTime = Number(sec);
   document.getElementById("done").innerHTML = formatTimeString(totalTime);
   globalTimer = setInterval(function() {
     totalTime--;
     if (totalTime < 0) {
       clearInterval(globalTimer);
-      document.getElementById(
-        "done"
-      ).innerHTML = `Time is up! You waited ${min +
-        (min ? "minutes and " : "")}${sec} seconds.`;
       globalTimer = null;
     } else {
       document.getElementById("done").innerHTML = formatTimeString(totalTime);
@@ -123,20 +122,40 @@ function upperFirstLetter(str) {
   return str[0].toUpperCase() + str.slice(1);
 }
 
-function newCard(activity) {
+function newCard() {
+  // var actID = document.getElementById("noActivities")
   if (document.getElementById("noActivities")) {
     document.getElementById("noActivities").remove();
   }
-  var timeString = getCardTimeString(activity.time);
+
+  currentActivity.hasLogged = true;
+  var timeString = getCardTimeString(currentActivity.time);
+  var congrats = document.getElementById('congrats')
+  congrats.innerHTML = `You ${currentActivity.category} so well!`;
   aside.innerHTML += `
     <section class="card activity">
-      <div class="stripe ${activity.category}"></div>
-      <h3>${upperFirstLetter(activity.category)}</h3>
+      <div class="stripe ${currentActivity.category}"></div>
+      <h3>${upperFirstLetter(currentActivity.category)}</h3>
       <p class="time">${timeString}</p>
-      <p class="description">${activity.description}</p>
+      <p class="description">${currentActivity.description}</p>
     </section>
   `;
+  timerPage.classList.add('hidden');
+  completePage.classList.remove('hidden');
 }
+
+function showHome(){
+  completePage.classList.add('hidden');
+  inputPage.classList.remove('hidden');
+  desc.value = "";
+  minIn.value = "";
+  secIn.value = "";
+  clearStudy()
+  clearMeditate()
+  clearExercise()
+  resetErrors()
+}
+
 
 function getCardTimeString(seconds) {
   var time = formatTimeString(seconds);
@@ -163,7 +182,7 @@ meditate.addEventListener("click", meditateButton);
 exercise.addEventListener("click", exerciseButton);
 
 function clearStudy() {
-  study.classList = "";  
+  study.classList = "";
   study.id = "";
   document.getElementById("studyImgInactive").classList = "";
   document.getElementById("studyImgActive").classList.add("hidden");
