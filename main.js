@@ -97,11 +97,14 @@ function switchPage() {
     minIn.value = "";
     secIn.value = "";
     document.getElementById('done').innerHTML=`${formatTimeString(currentActivity.time)}`
+    document.getElementById('activityOnTimer').innerHTML = upperFirstLetter(currentActivity.category);
+    document.getElementById('startCircle').value = 'START!';
   }
 
 }
 
 function startTimer() {
+  document.getElementById('startCircle').value = 'FOCUS!';
   timer(currentActivity.time);
 }
 
@@ -112,6 +115,8 @@ function timer(sec) {
   globalTimer = setInterval(function() {
     totalTime--;
     if (totalTime < 0) {
+      document.getElementById('startCircle').value = 'COMPLETE!';
+      document.getElementById('logBut').classList.remove('hidden');
       clearInterval(globalTimer);
       globalTimer = null;
     } else {
@@ -125,15 +130,8 @@ function upperFirstLetter(str) {
 }
 
 function newCard() {
-  // var actID = document.getElementById("noActivities")
   if (document.getElementById("noActivities")) {
     document.getElementById("noActivities").remove();
-  }
-  var timeDisplay = document.getElementById('done').innerHTML;
-  var warn = document.getElementById('warn');
-  warn.innerHTML = `You still have time to wait! left to wait!`;
-  if (!(timeDisplay === '0:00')) {
-    return warn.classList.remove('hidden')
   }
   currentActivity.hasLogged = true;
   var timeString = getCardTimeString(currentActivity.time);
@@ -149,6 +147,8 @@ function newCard() {
   `;
   timerPage.classList.add('hidden');
   completePage.classList.remove('hidden');
+  document.getElementById('logBut').classList.add('hidden');
+
 }
 
 function showHome(){
