@@ -96,7 +96,9 @@ function switchPage() {
     desc.value = "";
     minIn.value = "";
     secIn.value = "";
+    document.getElementById('done').innerHTML=`${formatTimeString(currentActivity.time)}`
   }
+
 }
 
 function startTimer() {
