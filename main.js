@@ -8,13 +8,17 @@ var timerPage = document.getElementById('timerPage');
 var completePage = document.getElementById('completePage')
 var currentActivity;
 var aside = document.querySelector("aside");
+var logCount = 0;
 
 class Activity {
   constructor(category, description, seconds, color) {
     this.category = category;
     this.description = description;
     this.time = seconds;
-    this.hasLogged = false;
+    this.isFavorite = false;
+    this.favorite = function() {
+      this.isFavorite = !this.isFavorite;
+    };
   }
 }
 
@@ -129,11 +133,16 @@ function timer(sec) {
 function upperFirstLetter(str) {
   return str[0].toUpperCase() + str.slice(1);
 }
-
+function addFavorite(){
+  currentActivity.favorite();
+  var starMessage = ['★','⭐']
+  document.getElementById(`star${logCount}`).innerHTML = starMessage[!!currentActivity.isFavorite];
+}
 function newCard() {
   if (document.getElementById("noActivities")) {
     document.getElementById("noActivities").remove();
   }
+  logCount++;
   currentActivity.hasLogged = true;
   var timeString = getCardTimeString(currentActivity.time);
   var congrats = document.getElementById('congrats')
@@ -141,10 +150,14 @@ function newCard() {
   aside.innerHTML += `
     <section class="card activity">
       <div class="stripe ${currentActivity.category}"></div>
-
-      <h3>${upperFirstLetter(currentActivity.category)}</h3>
+      <h3>${upperFirstLetter(currentActivity.category)}
+        <input class="star" type="checkbox" onclick='addFavorite()' />
+        <label for="star" id='star${logCount}'>★</label>
+      </h3>
       <p class="time">${timeString}</p>
-      <p class="description">${currentActivity.description}<input id='favorite' type='button' value='♥︎' onclick=''></p>
+      <p class="description">${currentActivity.description}
+      </p>
+      </label>
     </section>
   `;
   timerPage.classList.add('hidden');

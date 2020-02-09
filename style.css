@@ -269,21 +269,25 @@ input[type=text] {
   border-radius: 1000px;
   height: 25px;
 }
-#favorite {
-  float: right;
-  top: 60px;
-  cursor: pointer;
-  outline: none;
-  font-size: 3rem;
-  font-weight: 300;
-  background-color: #FFF;
-  color: #000000;
+
+/* [id="heart"] {
+  position: absolute;
+  left: -100vw;
 }
 
-#favorite:focus {
-  background-color: red;
-  color: #FFFFFF;
+[for="heart"] {
+  color: #FFF;
+  cursor: pointer;
+  font-size: 1em;
+  right: 5px;
+  top: 100px;
+  margin: 5px;
+  transition: color 0.2s ease-in-out;
 }
+
+[id="heart"]:checked + label {
+  color: red;
+} */
 .meditate {
   border-color: #c278fd;
 }
