@@ -10,7 +10,7 @@ var currentActivity;
 var aside = document.querySelector("aside");
 
 class Activity {
-  constructor(category, description, seconds) {
+  constructor(category, description, seconds, color) {
     this.category = category;
     this.description = description;
     this.time = seconds;
@@ -99,6 +99,7 @@ function switchPage() {
     document.getElementById('done').innerHTML=`${formatTimeString(currentActivity.time)}`
     document.getElementById('activityOnTimer').innerHTML = upperFirstLetter(currentActivity.category);
     document.getElementById('startCircle').value = 'START!';
+    document.getElementById('startCircle').classList.add(currentActivity.category);
   }
 
 }
