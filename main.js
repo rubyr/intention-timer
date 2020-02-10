@@ -9,12 +9,14 @@ var completePage = document.getElementById('completePage')
 var currentActivity;
 var aside = document.querySelector("aside");
 
+var activities = [];
+
 class Activity {
-  constructor(category, description, seconds, color,) {
+  constructor(category, description, seconds) {
     this.category = category;
     this.description = description;
     this.time = seconds;
-    this.hasLogged = false;
+    this.favorite = false;
     this.id = this.nextID();
   }
 
@@ -141,6 +143,8 @@ function upperFirstLetter(str) {
 // DEBUG --------------
 currentActivity = new Activity("meditate", "deep breathing", 300);
 newCard();
+currentActivity = new Activity("meditate", "this is the second one", 300);
+newCard();
 document.querySelector("#completePage").classList.add("hidden");
 
 function newCard() {
@@ -152,19 +156,18 @@ function newCard() {
   var congrats = document.getElementById('congrats')
   congrats.innerHTML = `You ${currentActivity.category} so well!`;
   aside.innerHTML += `
-    <section data-objectID="${currentActivity.id}" class="card activity">
+    <section data-objectid="${currentActivity.id}" class="card activity">
       <div class="stripe ${currentActivity.category}"></div>
-      <input type='button' class='favButton' onclick='clickFav()' value="🖤">
+      <input type='button' class='favButton' onclick='clickFav(this.parentElement)' value="♥︎">
       <h3>${upperFirstLetter(currentActivity.category)}</h3>
       <p class="time">${timeString}</p>
       <p class="description">${currentActivity.description}</p> 
-
     </section>
   `;
   timerPage.classList.add('hidden');
   completePage.classList.remove('hidden');
   document.getElementById('logBut').classList.add('hidden');
-
+  activities[currentActivity.id] = currentActivity;
 }
 
 function showHome(){
@@ -177,6 +180,16 @@ function showHome(){
   clearMeditate();
   clearExercise();
   resetErrors();
+}
+
+function clickFav(card) {
+  var id = card.dataset.objectid;
+  activities[id].favorite = !activities[id].favorite;
+  if (activities[id].favorite) {
+    card.classList.add("favorited");
+  } else {
+    card.classList.remove("favorited");
+  }
 }
 
 function getCardTimeString(seconds) {

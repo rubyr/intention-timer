@@ -52,6 +52,9 @@ form {
 
 aside {
   flex: 1 0 0;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
   color: #cbc9cf;
   padding: 10px 20px;
   border-left: 2px solid #46424d;
@@ -206,15 +209,26 @@ input[type=text] {
 }
 
 .favButton {
-    float:right;
-    background-color: transparent;
-    outline: none;
-    padding: 0px;
-    text-align: center;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-  }
+  float:right;
+  margin: 5px 0 0 0;
+  background-color: transparent;
+  border: 0;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 24px;
+  cursor: pointer;
+  outline: none;
+}
+.favButton:hover { 
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.favorited {
+  order: 1;
+}
+.favorited .favButton {
+  color: red;
+}
 
 
 #startCircle {
