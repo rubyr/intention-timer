@@ -74,7 +74,7 @@ function getCategoryString(categoryElement) {
 }
 
 function checkForErrors() {
-  return categoryFilled() && descriptionFilled() && 
+  return categoryFilled() && descriptionFilled() &&
     (minutesFilled() || secondsFilled());
 }
 
@@ -91,6 +91,7 @@ function descriptionFilled() {
     document.getElementById('descErr').classList.remove('hidden');
     return false;
   }
+  return true;
 }
 
 function minutesFilled() {
@@ -98,6 +99,7 @@ function minutesFilled() {
     document.getElementById('minErr').classList.remove('hidden');
     return false;
   }
+  return true;
 }
 
 function secondsFilled() {
@@ -105,6 +107,7 @@ function secondsFilled() {
     document.getElementById('secErr').classList.remove('hidden');
     return false;
   }
+  return true;
 }
 
 function setCurrentActivity() {
@@ -136,7 +139,6 @@ function startTimer() {
 }
 
 function timer(sec) {
-  clearInterval(globalTimer) //Resets clock so it doesn't stutter with previous clicks
   var totalTime = Number(sec);
   document.getElementById("done").innerHTML = formatTimeString(totalTime);
   globalTimer = setInterval(function() {
@@ -150,6 +152,15 @@ function timer(sec) {
       document.getElementById("done").innerHTML = formatTimeString(totalTime);
     }
   }, 1000);
+
+}
+
+function pauseStartTimer(totalTime) {
+  if (!!secondsLeft){
+    clearInterval(globalTimer)
+    document.getElementById('done').innerHTML = formatTimeString(secondsLeft);
+  } else {}
+
 }
 
 function upperFirstLetter(str) {
@@ -170,7 +181,7 @@ function newCard() {
       <input type='button' class='favButton' onclick='clickFav(this.parentElement)' value="♥︎">
       <h3>${upperFirstLetter(currentActivity.category)}</h3>
       <p class="time">${timeString}</p>
-      <p class="description">${currentActivity.description}</p> 
+      <p class="description">${currentActivity.description}</p>
     </section>
   `;
   timerPage.classList.add('hidden');
@@ -178,6 +189,7 @@ function newCard() {
   document.getElementById('logBut').classList.add('hidden');
   activities[currentActivity.id] = currentActivity;
 }
+
 
 function showHome(){
   completePage.classList.add('hidden');
