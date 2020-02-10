@@ -73,36 +73,53 @@ function getCategoryString(categoryElement) {
   return categoryElement.children[2].innerText.toLowerCase();
 }
 
-function switchPage() {
-  var descFilled = true;
-  if (!desc.value) {
-    descFilled = false;
-    document.getElementById('descErr').classList.remove('hidden');
-  }
-  var minFilled = true;
-  if (!minIn.value){
-    minFilled = false;
-    document.getElementById('minErr').classList.remove('hidden');
-  }
-  var secFilled = true;
-  if (!secIn.value){
-    secFilled = false;
-    document.getElementById('secErr').classList.remove('hidden');
-  }
-  var categorySelected = true;
-  if (document.getElementById("selectedCategory") === null) {
-    categorySelected = false;
-    document.getElementById('catErr').classList.remove('hidden');
-  }
+function checkForErrors() {
+  return categoryFilled() && descriptionFilled() && 
+    (minutesFilled() || secondsFilled());
+}
 
-  if (globalTimer === null && categorySelected && descFilled && (minFilled || secFilled)) {
+function categoryFilled() {
+  if (document.getElementById("selectedCategory") === null) {
+    document.getElementById('catErr').classList.remove('hidden');
+    return false;
+  }
+  return true;
+}
+
+function descriptionFilled() {
+  if (!desc.value) {
+    document.getElementById('descErr').classList.remove('hidden');
+    return false;
+  }
+}
+
+function minutesFilled() {
+  if (!minIn.value){
+    document.getElementById('minErr').classList.remove('hidden');
+    return false;
+  }
+}
+
+function secondsFilled() {
+  if (!secIn.value){
+    document.getElementById('secErr').classList.remove('hidden');
+    return false;
+  }
+}
+
+function setCurrentActivity() {
+  currentActivity = new Activity(
+    getCategoryString(document.getElementById('selectedCategory')),
+    desc.value,
+    Number(minIn.value * 60) + Number(secIn.value)
+  );
+}
+
+function gotoTimer() {
+  if (globalTimer === null && checkForErrors()) {
     inputPage.classList.add('hidden');
     timerPage.classList.remove('hidden');
-    currentActivity = new Activity(
-      getCategoryString(document.getElementById('selectedCategory')),
-      desc.value,
-      Number(minIn.value * 60) + Number(secIn.value)
-    );
+    setCurrentActivity();
     document.getElementById('done').innerHTML=`${formatTimeString(currentActivity.time)}`
     document.getElementById('activityOnTimer').innerHTML = desc.value;
     document.getElementById('startCircle').value = 'START!';
@@ -111,7 +128,6 @@ function switchPage() {
     minIn.value = "";
     secIn.value = "";
   }
-
 }
 
 function startTimer() {
@@ -215,6 +231,7 @@ function clearStudy() {
   document.getElementById("studyImgInactive").classList = "";
   document.getElementById("studyImgActive").classList.add("hidden");
 }
+
 function studyButton() {
   clearMeditate();
   clearExercise();
@@ -230,6 +247,7 @@ function clearMeditate() {
   document.getElementById("meditateImgInactive").classList = "";
   document.getElementById("meditateImgActive").classList.add("hidden");
 }
+
 function meditateButton() {
   clearStudy();
   clearExercise();
@@ -245,6 +263,7 @@ function clearExercise() {
   document.getElementById("exerciseImgActive").classList.add("hidden");
   document.getElementById("exerciseImgInactive").classList = "";
 }
+
 function exerciseButton() {
   clearStudy();
   clearMeditate();
