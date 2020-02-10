@@ -140,13 +140,6 @@ function upperFirstLetter(str) {
   return str[0].toUpperCase() + str.slice(1);
 }
 
-// DEBUG --------------
-currentActivity = new Activity("meditate", "deep breathing", 300);
-newCard();
-currentActivity = new Activity("meditate", "this is the second one", 300);
-newCard();
-document.querySelector("#completePage").classList.add("hidden");
-
 function newCard() {
   if (document.getElementById("noActivities")) {
     document.getElementById("noActivities").remove();
