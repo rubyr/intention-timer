@@ -89,8 +89,8 @@ function getCategoryString(categoryElement) {
 }
 
 function checkForErrors() {
-  return categoryFilled() && descriptionFilled() && 
-    (minutesFilled() || secondsFilled());
+  return categoryFilled() && fieldFilled(desc) && 
+    (fieldFilled(minIn) || fieldFilled(secIn));
 }
 
 function categoryFilled() {
@@ -101,25 +101,12 @@ function categoryFilled() {
   return true;
 }
 
-function descriptionFilled() {
-  if (!desc.value) {
-    document.getElementById('descErr').classList.remove('hidden');
+function fieldFilled(field) {
+  if (!field.value) {
+    document.getElementById(`${field.id}Err`).classList.remove('hidden');
     return false;
   }
-}
-
-function minutesFilled() {
-  if (!minIn.value){
-    document.getElementById('minErr').classList.remove('hidden');
-    return false;
-  }
-}
-
-function secondsFilled() {
-  if (!secIn.value){
-    document.getElementById('secErr').classList.remove('hidden');
-    return false;
-  }
+  return true;
 }
 
 function setCurrentActivity() {
