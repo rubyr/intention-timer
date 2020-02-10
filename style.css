@@ -164,7 +164,11 @@ input[type=text] {
   padding-top: 50px;
 }
 
-
+#pauseStartBox {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
 
 #startButtonBox {
   display: flex;
