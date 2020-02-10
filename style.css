@@ -164,7 +164,11 @@ input[type=text] {
   padding-top: 50px;
 }
 
-
+#pauseStartBox {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
 
 #startButtonBox {
   display: flex;
@@ -220,7 +224,7 @@ input[type=text] {
   outline: none;
   text-shadow: 1px 1px 0 #FFF, 1px -1px 0 #FFF, -1px 1px 0 #FFF, -1px -1px 0 #FFF, 1px 0px 0 #FFF, 0px 1px 0 #FFF, -1px 0px 0 #FFF, 0px -1px 0 #FFF;
 }
-.favButton:hover { 
+.favButton:hover {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
