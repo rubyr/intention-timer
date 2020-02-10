@@ -29,7 +29,6 @@ exercise.addEventListener("click", function() {
 minIn.addEventListener("keypress", preventLetters);
 secIn.addEventListener("keypress", preventLetters);
 
-
 class Activity {
   constructor(category, description, seconds) {
     this.category = category;
@@ -46,6 +45,7 @@ class Activity {
     return Activity.nextID++;
   }
 }
+
 function preventLetters(e) {
     // 0 for null values
     // 8 for backspace
@@ -232,55 +232,6 @@ function getCardTimeString(seconds) {
   return timeString;
 }
 
-
-// function clearStudy() {
-//   study.classList = "";
-//   study.id = "";
-//   document.getElementById("studyImgInactive").classList = "";
-//   document.getElementById("studyImgActive").classList.add("hidden");
-// }
-
-// function studyButton() {
-//   clearMeditate();
-//   clearExercise();
-//   study.classList.add("study-selected");
-//   study.id = "selectedCategory";
-//   document.getElementById("studyImgInactive").classList.add("hidden");
-//   document.getElementById("studyImgActive").classList = "";
-// }
-
-// function clearMeditate() {
-//   meditate.classList = "";
-//   meditate.id = "";
-//   document.getElementById("meditateImgInactive").classList = "";
-//   document.getElementById("meditateImgActive").classList.add("hidden");
-// }
-
-// function meditateButton() {
-//   clearStudy();
-//   clearExercise();
-//   meditate.classList.add("meditate-selected");
-//   meditate.id = "selectedCategory";
-//   document.getElementById("meditateImgInactive").classList.add("hidden");
-//   document.getElementById("meditateImgActive").classList = "";
-// }
-
-// function clearExercise() {
-//   exercise.classList = "";
-//   exercise.id = "";
-//   document.getElementById("exerciseImgActive").classList.add("hidden");
-//   document.getElementById("exerciseImgInactive").classList = "";
-// }
-
-// function exerciseButton() {
-//   clearStudy();
-//   clearMeditate();
-//   exercise.classList.add("exercise-selected");
-//   exercise.id = "selectedCategory";
-//   document.getElementById("exerciseImgInactive").classList.add("hidden");
-//   document.getElementById("exerciseImgActive").classList = "";
-// }
-
 function getSiblings(elem) {
 	return Array.prototype.filter.call(elem.parentNode.children, function (sibling) {
 		return sibling !== elem;
@@ -288,11 +239,10 @@ function getSiblings(elem) {
 }
 
 function clearButton(button) {
-  console.log(button);
   button.classList = "";
   button.id = "";
   document.getElementById(`${button.dataset.name}ImgActive`).classList.add("hidden");
-  document.getElementById(`${button.dataset.name}exerciseImgInactive`).classList = "";
+  document.getElementById(`${button.dataset.name}ImgInactive`).classList = "";
 }
 
 function selectButton(button) {
@@ -303,6 +253,6 @@ function selectButton(button) {
   var name = button.dataset.name;
   button.classList.add(`${name}-selected`);
   document.getElementById(`${name}ImgInactive`).classList.add("hidden");
-  document.getElementById(`${name}exerciseImgActive`).classList = "";
+  document.getElementById(`${name}ImgActive`).classList = "";
   button.id = "selectedCategory";
 }
