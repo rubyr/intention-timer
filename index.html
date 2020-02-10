@@ -109,10 +109,11 @@
           <h2 id="activityOnTimer">Activity Name Here</h2>
           <p id="done"></p>
           <section id='containerCircleButton'>
-            <input id='startCircle' type='button' class='' onclick="startTimer()">
+            <input id='startCircle' type='button' class='' onclick="startTimer(currentActivity.time)">
           </section>
           <section id='pauseStartBox'>
-            <input id='pauseStartButton' type='button' value = 'PAUSE' onclick="pauseStartTimer(secondsLeft)"/>
+            <input id='pauseButton' type='button' value = 'PAUSE!' class='button hidden' onclick="pauseStartTimer()"/>
+            <input id='startButton' type='button' value='START AGAIN!' class='button hidden' onclick='startTimer(timerSecondsLeft)'/>
           </section>
 
           <section id='logButtonBox'>

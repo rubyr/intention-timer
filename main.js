@@ -8,6 +8,7 @@ var timerPage = document.getElementById('timerPage');
 var completePage = document.getElementById('completePage')
 var currentActivity;
 var aside = document.querySelector("aside");
+var timerSecondsLeft = 0;
 
 var activities = [];
 
@@ -133,35 +134,39 @@ function gotoTimer() {
   }
 }
 
-function startTimer() {
+function startTimer(formSec) {
+  
+  document.getElementById('startButton').classList.add('hidden');
   document.getElementById('startCircle').value = 'FOCUS!';
-  timer(currentActivity.time);
+  timer(formSec);
+  document.getElementById('pauseButton').classList.remove('hidden')
 }
 
 function timer(sec) {
-  var totalTime = Number(sec);
-  document.getElementById("done").innerHTML = formatTimeString(totalTime);
+  clearInterval(globalTimer)
+  timerSecondsLeft = Number(sec);
+  document.getElementById("done").innerHTML = formatTimeString(timerSecondsLeft);
   globalTimer = setInterval(function() {
-    totalTime--;
-    if (totalTime < 0) {
+    timerSecondsLeft--;
+    if (timerSecondsLeft < 0) {
       document.getElementById('startCircle').value = 'COMPLETE!';
       document.getElementById('logBut').classList.remove('hidden');
       clearInterval(globalTimer);
       globalTimer = null;
     } else {
-      document.getElementById("done").innerHTML = formatTimeString(totalTime);
+      document.getElementById("done").innerHTML = formatTimeString(timerSecondsLeft);
     }
   }, 1000);
 
 }
 
-function pauseStartTimer(totalTime) {
-  if (!!secondsLeft){
-    clearInterval(globalTimer)
-    document.getElementById('done').innerHTML = formatTimeString(secondsLeft);
-  } else {}
+function pauseStartTimer() {
+    document.getElementById('pauseButton').classList.add('hidden');
+    document.getElementById('done').innerHTML = formatTimeString(timerSecondsLeft);
+    clearInterval(globalTimer);
+    document.getElementById('startButton').classList.remove('hidden');
+  }
 
-}
 
 function upperFirstLetter(str) {
   return str[0].toUpperCase() + str.slice(1);
