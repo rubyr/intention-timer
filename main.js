@@ -122,8 +122,8 @@ function gotoTimer() {
     inputPage.classList.add('hidden');
     timerPage.classList.remove('hidden');
     setCurrentActivity();
-    document.getElementById('done').innerHTML=`${formatTimeString(currentActivity.time)}`
-    document.getElementById('activityOnTimer').innerHTML = desc.value;
+    document.getElementById('done').innerHTML=`${formatTimeString(currentActivity.time)}`;
+    document.getElementById('activityOnTimer').innerHTML = currentActivity.description;
     document.getElementById('startCircle').value = 'START!';
     document.getElementById('startCircle').classList.add(currentActivity.category);
     desc.value = "";
@@ -164,12 +164,13 @@ function newCard() {
   }
   currentActivity.hasLogged = true;
   var timeString = getCardTimeString(currentActivity.time);
-  var congrats = document.getElementById('congrats')
+  var congrats = document.getElementById('congrats');
   congrats.innerHTML = `You ${currentActivity.category} so well!`;
   aside.innerHTML += `
     <section data-objectid="${currentActivity.id}" class="card activity">
       <div class="stripe ${currentActivity.category}"></div>
       <input type='button' class='favButton' onclick='clickFav(this.parentElement)' value="♥︎">
+      <input type='button' class='redoButton' onclick='clickRedo(this.parentElement)' value="↩︎">
       <h3>${upperFirstLetter(currentActivity.category)}</h3>
       <p class="time">${timeString}</p>
       <p class="description">${currentActivity.description}</p> 
@@ -201,6 +202,21 @@ function clickFav(card) {
   } else {
     card.classList.remove("favorited");
   }
+}
+
+function clickRedo(card) {
+  var id = card.dataset.objectid;
+  currentActivity = activities[id];
+  inputPage.classList.add('hidden');
+  completePage.classList.add('hidden');
+  timerPage.classList.remove('hidden');
+  document.getElementById('done').innerHTML=`${formatTimeString(currentActivity.time)}`;
+  document.getElementById('activityOnTimer').innerHTML = currentActivity.description;
+  document.getElementById('startCircle').value = 'START!';
+  document.getElementById('startCircle').classList.add(currentActivity.category);
+  desc.value = "";
+  minIn.value = "";
+  secIn.value = "";
 }
 
 function getCardTimeString(seconds) {
