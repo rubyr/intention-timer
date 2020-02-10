@@ -205,6 +205,18 @@ input[type=text] {
   cursor: pointer
 }
 
+.favButton {
+    float:right;
+    background-color: transparent;
+    outline: none;
+    padding: 0px;
+    text-align: center;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+
 #startCircle {
   cursor: pointer;
   outline: none;

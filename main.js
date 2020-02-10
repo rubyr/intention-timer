@@ -10,11 +10,19 @@ var currentActivity;
 var aside = document.querySelector("aside");
 
 class Activity {
-  constructor(category, description, seconds, color) {
+  constructor(category, description, seconds, color,) {
     this.category = category;
     this.description = description;
     this.time = seconds;
     this.hasLogged = false;
+    this.id = this.nextID();
+  }
+
+  nextID() {
+    if (Activity.nextID === undefined) {
+      Activity.nextID = 0;
+    }
+    return Activity.nextID++;
   }
 }
 
@@ -130,6 +138,11 @@ function upperFirstLetter(str) {
   return str[0].toUpperCase() + str.slice(1);
 }
 
+// DEBUG --------------
+currentActivity = new Activity("meditate", "deep breathing", 300);
+newCard();
+document.querySelector("#completePage").classList.add("hidden");
+
 function newCard() {
   if (document.getElementById("noActivities")) {
     document.getElementById("noActivities").remove();
@@ -139,12 +152,13 @@ function newCard() {
   var congrats = document.getElementById('congrats')
   congrats.innerHTML = `You ${currentActivity.category} so well!`;
   aside.innerHTML += `
-    <section class="card activity">
+    <section data-objectID="${currentActivity.id}" class="card activity">
       <div class="stripe ${currentActivity.category}"></div>
-
+      <input type='button' class='favButton' onclick='clickFav()' value="🖤">
       <h3>${upperFirstLetter(currentActivity.category)}</h3>
       <p class="time">${timeString}</p>
-      <p class="description">${currentActivity.description}</p>
+      <p class="description">${currentActivity.description}</p> 
+
     </section>
   `;
   timerPage.classList.add('hidden');
@@ -156,13 +170,13 @@ function newCard() {
 function showHome(){
   completePage.classList.add('hidden');
   inputPage.classList.remove('hidden');
-  // desc.value = "";
-  // minIn.value = "";
-  // secIn.value = "";
-  clearStudy()
-  clearMeditate()
-  clearExercise()
-  resetErrors()
+  desc.value = "";
+  minIn.value = "";
+  secIn.value = "";
+  clearStudy();
+  clearMeditate();
+  clearExercise();
+  resetErrors();
 }
 
 function getCardTimeString(seconds) {
