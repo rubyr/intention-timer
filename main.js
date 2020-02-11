@@ -80,9 +80,9 @@ function formatTimeString(sec) {
 }
 
 function resetErrors() {
-  document.getElementById("descErr").classList.add("hidden");
-  document.getElementById("minErr").classList.add("hidden");
-  document.getElementById("secErr").classList.add("hidden");
+  document.getElementById("descriptionErr").classList.add("hidden");
+  document.getElementById("minInErr").classList.add("hidden");
+  document.getElementById("secInErr").classList.add("hidden");
   document.getElementById("catErr").classList.add("hidden");
 }
 
@@ -162,6 +162,8 @@ function timer(sec) {
       document.getElementById("logBut").classList.remove("hidden");
       clearInterval(globalTimer);
       globalTimer = null;
+      document.getElementById('pauseButton').classList.add('hidden');
+      document.getElementById('startButton').classList.add('hidden');
     } else {
       document.getElementById("done").innerHTML = formatTimeString(
         timerSecondsLeft
@@ -213,9 +215,9 @@ function showHome() {
   desc.value = "";
   minIn.value = "";
   secIn.value = "";
-  clearStudy();
-  clearMeditate();
-  clearExercise();
+  clearButton(study);
+  clearButton(meditate);
+  clearButton(exercise);
   resetErrors();
 }
 
