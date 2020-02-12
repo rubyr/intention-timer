@@ -8,15 +8,6 @@ body {
   margin: 0;
 }
 
-@media all and (max-width: 700px) {
-  .container {
-    flex-direction: column;
-  }
-  aside {
-    flex: 1 0 0;
-  }
-}
-
 header {
   width: 100%;
   max-height: 50px;
@@ -66,7 +57,7 @@ aside {
   margin: 0;
   padding: 0;
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column;
 }
 
 .hidden {
@@ -90,6 +81,8 @@ aside {
 .categories {
   display: flex;
   justify-content: space-between;
+  font-size: 0.6rem;
+  text-align: center;
 }
 
 .categories section {
@@ -183,7 +176,6 @@ input[type=text] {
 
 }
 
-
 #done {
   display: flex;
   justify-content: center;
@@ -243,7 +235,6 @@ input[type=text] {
 .redoButton {
   padding: 5px 5px 0 0;
 }
-
 
 #startCircle {
   cursor: pointer;
@@ -318,4 +309,16 @@ input[type=text] {
 }
 .exercise {
   border-color: #fd8078;
+}
+
+@media all and (min-width: 650px) {
+  .container {
+    flex-direction: row;
+  }
+  aside {
+    flex: 1 0 0;
+  }
+  .container label {
+    font-size: 1rem;
+  }
 }
