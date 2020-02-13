@@ -1,11 +1,7 @@
-/*jshint esversion: 6 */
-
 var globalTimer = null;
-
 var study = document.querySelector("#study");
 var meditate = document.querySelector("#meditate");
 var exercise = document.querySelector("#exercise");
-
 var minIn = document.getElementById("minIn");
 var secIn = document.getElementById("secIn");
 var desc = document.getElementById("description");
@@ -15,7 +11,6 @@ var completePage = document.getElementById("completePage");
 var currentActivity;
 var aside = document.querySelector("aside");
 var timerSecondsLeft = 0;
-
 var activities = [];
 
 study.addEventListener("click", function() {
@@ -127,15 +122,14 @@ function gotoTimer() {
     inputPage.classList.add("hidden");
     timerPage.classList.remove("hidden");
     setCurrentActivity();
+    buttonRingColor();
     document.getElementById("timerDisplay").innerHTML = `${formatTimeString(
       currentActivity.time
     )}`;
     document.getElementById("activityOnTimer").innerHTML =
       currentActivity.description;
     document.getElementById("startCircle").value = "START!";
-    document
-      .getElementById("startCircle")
-      .classList.add(currentActivity.category);
+    document.getElementById("lookLeft").remove();
     desc.value = "";
     minIn.value = "";
     secIn.value = "";
@@ -179,6 +173,11 @@ function pauseStartTimer() {
   );
   clearInterval(globalTimer);
   document.getElementById("startButton").classList.remove("hidden");
+}
+
+function buttonRingColor() {
+  document.getElementById('startCircle').classList = "";
+  document.getElementById('startCircle').classList.add(currentActivity.category);
 }
 
 function upperFirstLetter(str) {
@@ -241,9 +240,7 @@ function clickRedo(card) {
   document.getElementById("activityOnTimer").innerHTML =
     currentActivity.description;
   document.getElementById("startCircle").value = "START!";
-  document
-    .getElementById("startCircle")
-    .classList.add(currentActivity.category);
+  buttonRingColor();
   desc.value = "";
   minIn.value = "";
   secIn.value = "";

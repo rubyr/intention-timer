@@ -1,53 +1,11 @@
-html {
-  font-family: "Montserrat", sans-serif;
-  background-color: #2b2733;
-  height: 100%;
-}
-
-body {
-  margin: 0;
-}
-
 @media all and (max-width: 400px) {
   .container {
     flex-direction: column;
   }
+
   aside {
     flex: 1 0 0;
   }
-}
-
-header {
-  width: 100%;
-  max-height: 50px;
-  margin: 0;
-  color: #fff;
-  background-color: #46424d;
-  text-align: center;
-}
-
-h1 {
-  margin: 0;
-  padding: 10px 0;
-  font-size: 1.5rem;
-  font-weight: lighter;
-}
-
-main {
-  flex: 2 0px;
-  padding: 10px 20px;
-  height: calc(100vh - 50px);
-  color: #cbc9cf;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  width: 60%;
-  height: calc(100% - 30px);
-  margin: 0 auto;
-  /* padding: 30px 0; */
 }
 
 aside {
@@ -61,43 +19,17 @@ aside {
   overflow-y: scroll;
 }
 
-.container {
-  min-height: calc(100vh - 50px);
+body {
   margin: 0;
-  padding: 0;
+}
+
+form {
   display: flex;
-  flex-flow: row wrap;
-}
-
-.hidden {
-  display: none !important;
-}
-
-.hidden aside {
-  display: flex;
-}
-
-.card {
-  border-radius: 10px;
-  background-color: #46424d;
-  box-shadow: 10px 10px 0px 0px rgba(0,0,0,0.15);
-}
-
-.fullscreen {
-  height: 85%;
-}
-
-.categories {
-  display: flex;
-  justify-content: space-between;
-}
-
-.categories section {
-  border-radius: 2px;
-  border: 1px solid #fff;
-  width: 25%;
-  text-align: center;
-  padding: 5px;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 60%;
+  height: calc(100% - 30px);
+  margin: 0 auto;
 }
 
 form img {
@@ -107,31 +39,29 @@ form img {
   margin-right: auto;
 }
 
-.study-selected {
-  border: 1px solid #b3fd78 !important;
-  color: #b3fd78;
+h1 {
+  margin: 0;
+  padding: 10px 0;
+  font-size: 1.5rem;
+  font-weight: lighter;
 }
 
-.meditate-selected {
-  border: 1px solid #c278fd !important;
-  color: #c278fd;
+header {
+  width: 100%;
+  max-height: 50px;
+  margin: 0;
+  color: #fff;
+  background-color: #46424d;
+  text-align: center;
 }
 
-.exercise-selected {
-  border: 1px solid #fd8078 !important;
-  color: #fd8078;
+html {
+  font-family: "Montserrat", sans-serif;
+  background-color: #2b2733;
+  height: 100%;
 }
 
-.time-input {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.time-input div {
-  width: 40%;
-}
-/* Formats form inout boxes to single white line */
-input[type=number]{
+input[type=number] {
   outline: none;
   border-width: 0 0 1px;
   border-color: white;
@@ -153,15 +83,33 @@ input[type=text] {
   font-size: 1rem;
 }
 
+main {
+  flex: 2 0px;
+  padding: 10px 20px;
+  height: calc(100vh - 50px);
+  color: #cbc9cf;
+}
+
 #activityOnTimer {
   text-align: center;
   padding-top: 50px
+}
+
+#containerCircleButton {
+  display: flex;
+  justify-content: center;
 }
 
 #createNewAct {
   display: flex;
   justify-content: center;
   padding-top: 50px;
+}
+
+#logButtonBox {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
 }
 
 #pauseStartBox {
@@ -175,75 +123,6 @@ input[type=text] {
   justify-content: flex-end;
   margin-top: 50px;
 }
-
-#logButtonBox {
-  display: flex;
-  justify-content: center;
-  margin-top: 50px;
-
-}
-
-
-#timerDisplay {
-  display: flex;
-  justify-content: center;
-  font-family: Verdana;
-  font-weight: 800;
-  color: #FFFFFF;
-  margin-top: 5px;
-  font-size: 4rem;
-}
-.button {
-  background-color: #FFF;
-  outline: none;
-  padding: 10px 35px;
-  text-align: center;
-  border-radius: 4px;
-  display: inline-block;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-#containerCircleButton {
-  display: flex;
-  justify-content: center;
-}
-.pointer{
-  cursor: pointer
-}
-
-.card.activity input[type="button"] {
-  display: none;
-  float:right;
-  margin: 5px 0 0 0;
-  background-color: transparent;
-  border: 0;
-  border-radius: 4px;
-  text-align: center;
-  font-size: 24px;
-  cursor: pointer;
-  outline: 0;
-  text-shadow: 1px 1px 0 #FFF, 1px -1px 0 #FFF, -1px 1px 0 #FFF, -1px -1px 0 #FFF, 1px 0px 0 #FFF, 0px 1px 0 #FFF, -1px 0px 0 #FFF, 0px -1px 0 #FFF;
-}
-.card.activity:hover input[type="button"] {
-  display: inline-block;
-}
-.favButton:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-.favorited {
-  order: 1;
-}
-.favorited .favButton {
-  display: block !important;
-  color: red;
-  text-shadow: 1px 1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, -1px -1px 0 #000, 1px 0px 0 #000, 0px 1px 0 #000, -1px 0px 0 #000, 0px -1px 0 #000;
-}
-.redoButton {
-  padding: 5px 5px 0 0;
-}
-
 
 #startCircle {
   cursor: pointer;
@@ -260,9 +139,89 @@ input[type=text] {
   color: #FFF;
 }
 
-.submit {
-  width: fit-content;
-  align-self: flex-end;
+#timerDisplay {
+  display: flex;
+  justify-content: center;
+  font-family: Verdana;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin-top: 5px;
+  font-size: 4rem;
+}
+
+.activity {
+  margin: 15px 0 0 0;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.activity h3 {
+  margin: 5px 0;
+  font-weight: bolder;
+}
+
+.activity>.description {
+  margin: 10px 0;
+  font-weight: 300;
+}
+
+.activity>.time {
+  margin: 2px 0;
+  font-size: 0.9rem;
+}
+
+.button {
+  background-color: #FFF;
+  outline: none;
+  padding: 10px 35px;
+  text-align: center;
+  border-radius: 4px;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.card {
+  border-radius: 10px;
+  background-color: #46424d;
+  box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 0.15);
+}
+
+.card.activity input[type="button"] {
+  display: inline-block;
+  float: right;
+  margin: 5px 0 0 0;
+  background-color: transparent;
+  border: 0;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 24px;
+  cursor: pointer;
+  outline: 0;
+  text-shadow: 1px 1px 0 #FFF, 1px -1px 0 #FFF, -1px 1px 0 #FFF, -1px -1px 0 #FFF, 1px 0px 0 #FFF, 0px 1px 0 #FFF, -1px 0px 0 #FFF, 0px -1px 0 #FFF;
+}
+
+.categories {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.6rem;
+  text-align: center;
+}
+
+.categories section {
+  border-radius: 2px;
+  border: 1px solid #fff;
+  width: 25%;
+  text-align: center;
+  padding: 5px;
+}
+
+.container {
+  min-height: calc(100vh - 50px);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-flow: row wrap;
 }
 
 .error-text {
@@ -278,28 +237,59 @@ input[type=text] {
 }
 
 .error-text>p {
-  display:inline;
+  display: inline;
 }
 
-.activity {
-  margin: 15px 0 0 0;
-  padding: 5px 10px;
-  border-radius: 5px;
+.exercise {
+  border-color: #fd8078 !important;
 }
 
-.activity h3 {
-  margin: 5px 0;
-  font-weight: bolder;
+.exercise-selected {
+  border: 1px solid #fd8078 !important;
+  color: #fd8078;
 }
 
-.activity>.time {
-  margin: 2px 0;
-  font-size: 0.9rem;
+.favButton:hover {
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
-.activity>.description {
-  margin: 10px 0;
-  font-weight: 300;
+.favorited {
+  order: 1;
+}
+
+.favorited .favButton {
+  display: block !important;
+  color: red;
+  text-shadow: 1px 1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, -1px -1px 0 #000, 1px 0px 0 #000, 0px 1px 0 #000, -1px 0px 0 #000, 0px -1px 0 #000;
+}
+
+.fullscreen {
+  height: 85%;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.hidden aside {
+  display: flex;
+}
+
+.meditate {
+  border-color: #c278fd !important;
+}
+
+.meditate-selected {
+  border: 1px solid #c278fd !important;
+  color: #c278fd;
+}
+
+.pointer {
+  cursor: pointer
+}
+
+.redoButton {
+  padding: 5px 5px 0 0;
 }
 
 .stripe {
@@ -310,12 +300,26 @@ input[type=text] {
   height: 25px;
 }
 
-.meditate {
-  border-color: #c278fd;
-}
 .study {
-  border-color: #b3fd78;
+  border-color: #b3fd78 !important;
 }
-.exercise {
-  border-color: #fd8078;
+
+.study-selected {
+  border: 1px solid #b3fd78 !important;
+  color: #b3fd78;
+}
+
+.submit {
+  width: fit-content;
+  align-self: flex-end;
+}
+
+.time-input {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.time-input div {
+  width: 40%;
 }

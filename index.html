@@ -1,144 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Montserrat:300,400&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-    <title>Intention Timer</title>
-  </head>
-  <body>
-    <header>
-      <h1>INTENTION TIMER</h1>
-    </header>
-    <section class="container">
-      <main id="inputPage">
-        <h3>New Activity</h3>
-        <section class="card fullscreen">
-          <form action="">
-            <section>
-              <p>Select a category:</p>
-              <section class="categories">
-                <section id="study" data-name="study">
-                  <img
-                    src="assets/study.svg"
-                    alt="Study"
-                    id="studyImgInactive"
-                  />
-                  <img
-                    src="assets/study-active.svg"
-                    alt="Study"
-                    id="studyImgActive"
-                    class="hidden"
-                  />
-                  <label for="study">Study</label>
-                </section>
-                <section id="meditate" data-name="meditate">
-                  <img
-                    src="assets/meditate.svg"
-                    alt="Meditate"
-                    id="meditateImgInactive"
-                  />
-                  <img
-                    src="assets/meditate-active.svg"
-                    alt="Meditate"
-                    id="meditateImgActive"
-                    class="hidden"
-                  />
-                  <label for="meditate">Meditate</label>
-                </section>
-                <section id="exercise" data-name="exercise">
-                  <img
-                    src="assets/exercise.svg"
-                    alt="Exercise"
-                    id="exerciseImgInactive"
-                  />
-                  <img
-                    src="assets/exercise-active.svg"
-                    alt="Exercise"
-                    id="exerciseImgActive"
-                    class="hidden"
-                  />
-                  <label for="exercise">Exercise</label>
-                </section>
-              </section>
-              <section id="catErr" class="error-text hidden">
-                <img src="assets/warning.svg" alt="">
-                <p>Please select a category.</p>
-              </section>
-            </section>
-            <section>
-              <p>What would you like to accomplish during this time?</p>
-              <input type="text" name="description" id="description" />
-              <section id="descriptionErr" class="error-text hidden">
-                <img src="assets/warning.svg" alt="">
-                <p>A description is required.</p>
-              </section>
-            </section>
-            <section class="time-input">
-                <div>
-                    <p>Minutes</p>
-                    <input type="number" ID="minIn" type="text">
-                    <section id="minInErr" class="error-text hidden">
-                      <img src="assets/warning.svg" alt="">
-                      <p>Please enter a time.</p>
-                    </section>
-                </div>
-                <div>
-                    <p>Seconds</p>
-                    <input type="number" ID="secIn" type="text">
-                    <section id="secInErr" class="error-text hidden">
-                      <img src="assets/warning.svg" alt="">
-                      <p>Please enter a time.</p>
-                    </section>
-                </div>
-            </section>
-            <section id='startButtonBox'>
-              <input type="button" value="START ACTIVITY" onclick="gotoTimer()" class='button'>
-            </section>
-          </form>
-        </section>
-      </main>
-      <main id="timerPage" class="hidden">
-        <h3>Current Activity</h3>
-        <section class='card fullscreen'>
-          <h2 id="activityOnTimer">Activity Name Here</h2>
-          <p id="timerDisplay"></p>
-          <section id='containerCircleButton'>
-            <input id='startCircle' type='button' class='' onclick="startTimer(currentActivity.time)">
-          </section>
-          <section id='pauseStartBox'>
-            <input id='pauseButton' type='button' value = 'PAUSE!' class='button hidden' onclick="pauseStartTimer()"/>
-            <input id='startButton' type='button' value='START AGAIN!' class='button hidden' onclick='startTimer(timerSecondsLeft)'/>
-          </section>
 
-          <section id='logButtonBox'>
-            <input id='logBut' type='button' value="LOG ACTIVITY" class='button hidden' onclick="newCard()">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Intention Timer</title>
+</head>
+
+<body>
+  <header>
+    <h1>INTENTION TIMER</h1>
+  </header>
+  <section class="container">
+    <main id="inputPage">
+      <h3>New Activity</h3>
+      <section class="card fullscreen">
+        <form action="">
+          <section>
+            <p>Select a category:</p>
+            <section class="categories">
+              <section id="study" data-name="study">
+                <img src="assets/study.svg" alt="Study" id="studyImgInactive" />
+                <img src="assets/study-active.svg" alt="Study" id="studyImgActive" class="hidden" />
+                <label for="study">Study</label>
+              </section>
+              <section id="meditate" data-name="meditate">
+                <img src="assets/meditate.svg" alt="Meditate" id="meditateImgInactive" />
+                <img src="assets/meditate-active.svg" alt="Meditate" id="meditateImgActive" class="hidden" />
+                <label for="meditate">Meditate</label>
+              </section>
+              <section id="exercise" data-name="exercise">
+                <img src="assets/exercise.svg" alt="Exercise" id="exerciseImgInactive" />
+                <img src="assets/exercise-active.svg" alt="Exercise" id="exerciseImgActive" class="hidden" />
+                <label for="exercise">Exercise</label>
+              </section>
+            </section>
+            <section id="catErr" class="error-text hidden">
+              <img src="assets/warning.svg" alt="">
+              <p>Please select a category.</p>
+            </section>
           </section>
-      </main>
-      <main id="completePage" class="hidden">
-        <h3 id="congrats">Completed Activity</h3>
-        <section class='card fullscreen'>
-          <section id='createNewAct'>
-            <input type='button' value="CREATE A NEW ACTIVITY" class='button' onclick="showHome()">
+          <section>
+            <p>What would you like to accomplish during this time?</p>
+            <input type="text" name="description" id="description" />
+            <section id="descriptionErr" class="error-text hidden">
+              <img src="assets/warning.svg" alt="">
+              <p>A description is required.</p>
+            </section>
           </section>
+          <section class="time-input">
+            <div>
+              <p>Minutes</p>
+              <input type="number" ID="minIn" type="text">
+              <section id="minInErr" class="error-text hidden">
+                <img src="assets/warning.svg" alt="">
+                <p>Please enter a time.</p>
+              </section>
+            </div>
+            <div>
+              <p>Seconds</p>
+              <input type="number" ID="secIn" type="text">
+              <section id="secInErr" class="error-text hidden">
+                <img src="assets/warning.svg" alt="">
+                <p>Please enter a time.</p>
+              </section>
+            </div>
+          </section>
+          <section id='startButtonBox'>
+            <input type="button" value="START ACTIVITY" onclick="gotoTimer()" class='button'>
+          </section>
+        </form>
+      </section>
+    </main>
+    <main id="timerPage" class="hidden">
+      <h3>Current Activity</h3>
+      <section class='card fullscreen'>
+        <h2 id="activityOnTimer">Activity Name Here</h2>
+        <p id="timerDisplay"></p>
+        <section id='containerCircleButton'>
+          <input id='startCircle' type='button' class='' onclick="startTimer(currentActivity.time)">
         </section>
-      </main>
-      <aside>
-        <section id="noActivities">
-          <h3>Past activities</h3>
-          <p>
-            You haven't logged any activities yet.
-             <br>Complete the form to the
-            left to get started!
-          </p>
+        <section id='pauseStartBox'>
+          <input id='pauseButton' type='button' value='PAUSE!' class='button hidden' onclick="pauseStartTimer()" />
+          <input id='startButton' type='button' value='START AGAIN!' class='button hidden' onclick='startTimer(timerSecondsLeft)' />
         </section>
-      </aside>
-    </section>
-  </body>
-  <script src="main.js"></script>
+        <section id='logButtonBox'>
+          <input id='logBut' type='button' value="LOG ACTIVITY" class='button hidden' onclick="newCard()">
+        </section>
+    </main>
+    <main id="completePage" class="hidden">
+      <h3 id="congrats">Completed Activity</h3>
+      <section class='card fullscreen'>
+        <section id='createNewAct'>
+          <input type='button' value="CREATE A NEW ACTIVITY" class='button' onclick="showHome()">
+        </section>
+      </section>
+    </main>
+    <aside>
+      <section id="noActivities">
+        <h3>Past activities</h3>
+        <p>
+          You haven't logged any activities yet.
+        </p>
+        <p id='lookLeft'>
+          Complete the form to the
+          left to get started!
+        </p>
+      </section>
+    </aside>
+  </section>
+</body>
+<script src="main.js"></script>
+
 </html>
