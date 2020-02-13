@@ -127,7 +127,7 @@ function gotoTimer() {
     inputPage.classList.add("hidden");
     timerPage.classList.remove("hidden");
     setCurrentActivity();
-    document.getElementById("done").innerHTML = `${formatTimeString(
+    document.getElementById("timerDisplay").innerHTML = `${formatTimeString(
       currentActivity.time
     )}`;
     document.getElementById("activityOnTimer").innerHTML =
@@ -152,7 +152,7 @@ function startTimer(formSec) {
 function timer(sec) {
   clearInterval(globalTimer);
   timerSecondsLeft = Number(sec);
-  document.getElementById("done").innerHTML = formatTimeString(
+  document.getElementById("timerDisplay").innerHTML = formatTimeString(
     timerSecondsLeft
   );
   globalTimer = setInterval(function() {
@@ -165,7 +165,7 @@ function timer(sec) {
       document.getElementById('pauseButton').classList.add('hidden');
       document.getElementById('startButton').classList.add('hidden');
     } else {
-      document.getElementById("done").innerHTML = formatTimeString(
+      document.getElementById("timerDisplay").innerHTML = formatTimeString(
         timerSecondsLeft
       );
     }
@@ -174,7 +174,7 @@ function timer(sec) {
 
 function pauseStartTimer() {
   document.getElementById("pauseButton").classList.add("hidden");
-  document.getElementById("done").innerHTML = formatTimeString(
+  document.getElementById("timerDisplay").innerHTML = formatTimeString(
     timerSecondsLeft
   );
   clearInterval(globalTimer);
@@ -237,9 +237,7 @@ function clickRedo(card) {
   inputPage.classList.add("hidden");
   completePage.classList.add("hidden");
   timerPage.classList.remove("hidden");
-  document.getElementById("done").innerHTML = `${formatTimeString(
-    currentActivity.time
-  )}`;
+  document.getElementById("timerDisplay").innerHTML = `${formatTimeString(currentActivity.time)}`;
   document.getElementById("activityOnTimer").innerHTML =
     currentActivity.description;
   document.getElementById("startCircle").value = "START!";
