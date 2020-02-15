@@ -31,23 +31,6 @@ exercise.addEventListener("click", function() {
 minIn.addEventListener("keypress", preventLetters);
 secIn.addEventListener("keypress", preventLetters);
 
-class Activity {
-  constructor(category, description, seconds) {
-    this.category = category;
-    this.description = description;
-    this.time = seconds;
-    this.favorite = false;
-    this.id = this.nextID();
-  }
-
-  nextID() {
-    if (Activity.nextID === undefined) {
-      Activity.nextID = 0;
-    }
-    return Activity.nextID++;
-  }
-}
-
 function preventLetters(e) {
   // 0 for null values
   // 8 for backspace
